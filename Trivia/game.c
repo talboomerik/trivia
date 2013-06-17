@@ -31,14 +31,23 @@ int game_how_many_players(game_t *self)
 	return self->cur;
 }
 
-bool game_wrong_answer(game_t *self)
+bool game_was_correctly_answered(game_t *self)
 {
 	return false;
 }
 
-bool game_was_correctly_answered(game_t *self)
+bool game_wrong_answer(game_t *self)
 {
-	return false;
+	printf("Question was incorrectly answered\n");
+	printf("%s was sent to the penalty box\n", self->players[self->current_player]);
+	self->in_penalty_box[self->current_player] = true;
+
+	self->current_player++;
+	if (self->current_player == self->cur)
+	{
+		self->current_player = 0;
+	}
+	return true;
 }
 
 bool game_did_player_win(game_t *self)
