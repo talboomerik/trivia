@@ -12,6 +12,7 @@ typedef struct
 	int cur;
 
 	int current_player;
+	bool out_of_penalty_box;
 
 	char pop_questions[50][255];
 	int cur_pop;

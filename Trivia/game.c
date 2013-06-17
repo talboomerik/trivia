@@ -34,24 +34,24 @@ bool game_is_playable(game_t *self)
 
 void game_ask_question(game_t *self)
 {
-	if (strcmp(game_current_category(self),"Pop") == 0)
+	if (strcmp(game_current_category(self), "Pop") == 0)
 	{
-		printf("%s\n",self->pop_questions[self->cur_pop++]);
+		printf("%s\n", self->pop_questions[self->cur_pop++]);
 
 	}
-	if (strcmp(game_current_category(self),"Science") == 0)
+	if (strcmp(game_current_category(self), "Science") == 0)
 	{
-		printf("%s\n",self->science_questions[self->cur_sci++]);
+		printf("%s\n", self->science_questions[self->cur_sci++]);
 
 	}
-	if (strcmp(game_current_category(self),"Sports") == 0)
+	if (strcmp(game_current_category(self), "Sports") == 0)
 	{
-		printf("%s\n",self->sports_questions[self->cur_spo++]);
+		printf("%s\n", self->sports_questions[self->cur_spo++]);
 
 	}
-	if (strcmp(game_current_category(self),"Rock") == 0)
+	if (strcmp(game_current_category(self), "Rock") == 0)
 	{
-		printf("%s\n",self->rock_questions[self->cur_roc++]);
+		printf("%s\n", self->rock_questions[self->cur_roc++]);
 
 	}
 }
@@ -81,13 +81,60 @@ int game_how_many_players(game_t *self)
 
 bool game_was_correctly_answered(game_t *self)
 {
-	return false;
+	if (self->in_penalty_box[self->current_player])
+	{
+		if (self->out_of_penalty_box)
+		{
+			printf("Answer was correct!!!!\n");
+			self->purses[self->current_player]++;
+			printf("%s now has %d Gold Coins.\n",
+					self->players[self->current_player],
+					self->purses[self->current_player]);
+
+			bool winner = game_did_player_win(self);
+			self->current_player++;
+			if (self->current_player == self->cur)
+			{
+				self->current_player = 0;
+			}
+
+			return winner;
+		}
+		else
+		{
+			self->current_player++;
+			if (self->current_player == self->cur)
+			{
+				self->current_player = 0;
+			}
+
+			return true;
+		}
+	}
+	else
+	{
+		printf("Answer was correct!!!!\n");
+		self->purses[self->current_player]++;
+		printf("%s now has %d Gold Coins.\n",
+				self->players[self->current_player],
+				self->purses[self->current_player]);
+
+		bool winner = game_did_player_win(self);
+		self->current_player++;
+		if (self->current_player == self->cur)
+		{
+			self->current_player = 0;
+		}
+
+		return winner;
+	}
 }
 
 bool game_wrong_answer(game_t *self)
 {
 	printf("Question was incorrectly answered\n");
-	printf("%s was sent to the penalty box\n", self->players[self->current_player]);
+	printf("%s was sent to the penalty box\n",
+			self->players[self->current_player]);
 	self->in_penalty_box[self->current_player] = true;
 
 	self->current_player++;
@@ -105,15 +152,24 @@ bool game_did_player_win(game_t *self)
 
 const char * game_current_category(game_t *self)
 {
-	if (self->places[self->current_player] == 0) return "Pop";
-	if (self->places[self->current_player] == 4) return "Pop";
-	if (self->places[self->current_player] == 8) return "Pop";
-	if (self->places[self->current_player] == 1) return "Science";
-	if (self->places[self->current_player] == 5) return "Science";
-	if (self->places[self->current_player] == 9) return "Science";
-	if (self->places[self->current_player] == 2) return "Sports";
-	if (self->places[self->current_player] == 6) return "Sports";
-	if (self->places[self->current_player] == 10) return "Sports";
+	if (self->places[self->current_player] == 0)
+		return "Pop";
+	if (self->places[self->current_player] == 4)
+		return "Pop";
+	if (self->places[self->current_player] == 8)
+		return "Pop";
+	if (self->places[self->current_player] == 1)
+		return "Science";
+	if (self->places[self->current_player] == 5)
+		return "Science";
+	if (self->places[self->current_player] == 9)
+		return "Science";
+	if (self->places[self->current_player] == 2)
+		return "Sports";
+	if (self->places[self->current_player] == 6)
+		return "Sports";
+	if (self->places[self->current_player] == 10)
+		return "Sports";
 	return "Rock";
 }
 
