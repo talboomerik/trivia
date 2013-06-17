@@ -31,4 +31,6 @@ bool game_was_correctly_answered(game_t *self);
 
 bool game_did_player_win(game_t *self);
 
+const char * game_current_category(game_t *self);
+
 #endif /* GAME_H_ */
