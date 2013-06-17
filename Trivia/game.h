@@ -11,6 +11,8 @@ typedef struct
 	bool in_penalty_box[6];
 	int cur;
 
+	int current_player;
+
 }
 game_t;
 
@@ -26,5 +28,7 @@ int game_how_many_players(game_t *self);
 bool game_wrong_answer(game_t *self);
 
 bool game_was_correctly_answered(game_t *self);
+
+bool game_did_player_win(game_t *self);
 
 #endif /* GAME_H_ */
