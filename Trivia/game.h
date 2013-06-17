@@ -13,6 +13,11 @@ typedef struct
 
 	int current_player;
 
+	char pop_questions[50][255];
+	char science_questions[50][255];
+	char sports_questions[50][255];
+	char rock_questions[50][255];
+
 }
 game_t;
 
@@ -22,6 +27,8 @@ void game_initialize(game_t *self);
 bool game_add(game_t *self, const char *name);
 
 void game_roll(game_t *self, int die);
+
+char* game_create_rock_question(int index);
 
 int game_how_many_players(game_t *self);
 

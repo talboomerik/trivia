@@ -1,10 +1,30 @@
 #include <stdio.h>
 #include <string.h>
+#include <malloc.h>
 #include "game.h"
 
 void game_initialize(game_t *self)
 {
+	int i;
 	memset(self, 0, sizeof(game_t));
+
+	for (i = 0; i < 50; ++i)
+	{
+		sprintf(self->pop_questions[i], "Pop Question %d", i);
+		sprintf(self->science_questions[i], "Science Question %d", i);
+		sprintf(self->sports_questions[i], "Sports Question %d", i);
+
+		char *rock_question = game_create_rock_question(i);
+		strcpy(self->rock_questions[i], rock_question);
+		free(rock_question);
+	}
+}
+
+char* game_create_rock_question(int index)
+{
+	char index_str[127];
+	sprintf(index_str, "Rock Question %d", index);
+	return strdup(index_str);
 }
 
 
