@@ -71,6 +71,49 @@ bool game_add(game_t *self, const char *name)
 
 void game_roll(game_t *self, int die)
 {
+	printf("%s is the current player\n", self->players[self->current_player]);
+	printf("They have rolled a %d\n", die);
+
+	if (self->in_penalty_box[self->current_player])
+	{
+		if (die % 2 != 0)
+		{
+			self->out_of_penalty_box = true;
+			printf("%s is getting out of the penalty box\n",
+					self->players[self->current_player]);
+
+			self->places[self->current_player] =
+					self->places[self->current_player] + die;
+			if (self->places[self->current_player] > 11)
+				self->places[self->current_player] =
+						self->places[self->current_player] - 12;
+
+			printf("%s's new location is %d\n",
+					self->players[self->current_player],
+					self->places[self->current_player]);
+			printf("The category is %s\n", game_current_category(self));
+			game_ask_question(self);
+		}
+		else
+		{
+			printf("%s is not getting out of the penalty box\n",
+					self->players[self->current_player]);
+			self->out_of_penalty_box = false;
+		}
+	}
+	else
+	{
+		self->places[self->current_player] = self->places[self->current_player]
+				+ die;
+		if (self->places[self->current_player] > 11)
+			self->places[self->current_player] =
+					self->places[self->current_player] - 12;
+
+		printf("%s's new location is %d\n", self->players[self->current_player],
+				self->places[self->current_player]);
+		printf("The category is %s\n", game_current_category(self));
+		game_ask_question(self);
+	}
 
 }
 
