@@ -7,7 +7,35 @@ void game_initialize(game_t *self)
 }
 
 
-void game_add(game_t *self, const char *name)
+bool game_add(game_t *self, const char *name)
 {
-	self->n[self->cur++] = strdup(name);
+	self->players[self->cur++] = strdup(name);
+	self->places[self->cur] = 0;
+	self->purses[self->cur] = 0;
+	self->in_penalty_box[self->cur] = false;
+
+	printf("%s was added\n", name);
+	printf("They are player number %s\n", self->cur);
+
+	return true;
+}
+
+void game_roll(game_t *self, int die)
+{
+
+}
+
+int game_how_many_players(game_t *self)
+{
+	return self->cur;
+}
+
+bool game_wrong_answer(game_t *self)
+{
+	return false;
+}
+
+bool game_was_correctly_answered(game_t *self)
+{
+	return false;
 }
