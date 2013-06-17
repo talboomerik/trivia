@@ -14,9 +14,13 @@ typedef struct
 	int current_player;
 
 	char pop_questions[50][255];
+	int cur_pop;
 	char science_questions[50][255];
+	int cur_sci;
 	char sports_questions[50][255];
+	int cur_spo;
 	char rock_questions[50][255];
+	int cur_roc;
 
 }
 game_t;
@@ -39,5 +43,9 @@ bool game_was_correctly_answered(game_t *self);
 bool game_did_player_win(game_t *self);
 
 const char * game_current_category(game_t *self);
+
+bool game_is_playable(game_t *self);
+
+void game_ask_question(game_t *self);
 
 #endif /* GAME_H_ */

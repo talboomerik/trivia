@@ -27,6 +27,34 @@ char* game_create_rock_question(int index)
 	return strdup(index_str);
 }
 
+bool game_is_playable(game_t *self)
+{
+	return (game_how_many_players(self) >= 2);
+}
+
+void game_ask_question(game_t *self)
+{
+	if (strcmp(game_current_category(self),"Pop") == 0)
+	{
+		printf("%s\n",self->pop_questions[self->cur_pop++]);
+
+	}
+	if (strcmp(game_current_category(self),"Science") == 0)
+	{
+		printf("%s\n",self->science_questions[self->cur_sci++]);
+
+	}
+	if (strcmp(game_current_category(self),"Sports") == 0)
+	{
+		printf("%s\n",self->sports_questions[self->cur_spo++]);
+
+	}
+	if (strcmp(game_current_category(self),"Rock") == 0)
+	{
+		printf("%s\n",self->rock_questions[self->cur_roc++]);
+
+	}
+}
 
 bool game_add(game_t *self, const char *name)
 {
