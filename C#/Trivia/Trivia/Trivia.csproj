@@ -68,6 +68,7 @@
   <ItemGroup>
     <Compile Include="Game.cs" />
     <Compile Include="GameRunner.cs" />
+    <Compile Include="GoldenMaster.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
