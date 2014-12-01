@@ -19,8 +19,8 @@ namespace Trivia
             aGame.add("Chet");
             aGame.add("Pat");
             aGame.add("Sue");
-
-            Random rand = new Random();
+            
+            Random rand = (args.Length == 0 ? new Random() : new Random(args[0].GetHashCode()));
 
             do
             {
