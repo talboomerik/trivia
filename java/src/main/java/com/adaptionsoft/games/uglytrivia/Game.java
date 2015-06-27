@@ -126,48 +126,26 @@ public class Game {
     }
 
     public boolean wasCorrectlyAnswered() {
-        if (isCurrentPlayerInPenaltyBox()) {
-            if (!isCurrentPlayerGettingOutOfPenaltyBox) {
-                currentPlayer++;
-                if (currentPlayer == players.size())
-                    currentPlayer = FIRST_PLAYER;
-                return true;
-            }
-        }
-
-        if (isCurrentPlayerInPenaltyBox()) {
-            if (isCurrentPlayerGettingOutOfPenaltyBox) {
-                System.out.println("Answer was correct!!!");
-                purses[currentPlayer]++;
-                System.out.println(players.get(currentPlayer)
-                        + " now has "
-                        + purses[currentPlayer]
-                        + " Gold Coins.");
-
-                boolean winner = didPlayerWin();
-                currentPlayer++;
-                if (currentPlayer == players.size())
-                    currentPlayer = FIRST_PLAYER;
-
-                return winner;
-            }
-        } else {
-            System.out.println("Answer was correct!!!");
-            purses[currentPlayer]++;
-            System.out.println(players.get(currentPlayer)
-                    + " now has "
-                    + purses[currentPlayer]
-                    + " Gold Coins.");
-
-            boolean winner = didPlayerWin();
+        if (isCurrentPlayerInPenaltyBox() && !isCurrentPlayerGettingOutOfPenaltyBox) {
             currentPlayer++;
             if (currentPlayer == players.size())
                 currentPlayer = FIRST_PLAYER;
-
-            return winner;
+            return true;
         }
 
-        return false;
+        System.out.println("Answer was correct!!!");
+        purses[currentPlayer]++;
+        System.out.println(players.get(currentPlayer)
+                + " now has "
+                + purses[currentPlayer]
+                + " Gold Coins.");
+
+        boolean winner = didPlayerWin();
+        currentPlayer++;
+        if (currentPlayer == players.size())
+            currentPlayer = FIRST_PLAYER;
+
+        return winner;
     }
 
     public boolean wrongAnswer() {
