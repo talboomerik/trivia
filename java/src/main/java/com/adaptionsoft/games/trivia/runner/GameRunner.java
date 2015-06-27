@@ -1,40 +1,45 @@
 
 package com.adaptionsoft.games.trivia.runner;
-import java.util.Random;
 
 import com.adaptionsoft.games.uglytrivia.Game;
+
+import java.util.Random;
 
 
 public class GameRunner {
 
-	public static final int BOUND = 9;
-	public static final int LOOSE = 7;
-	public static final int MAXIMUM_EYES_ON_DICE = 5;
+    public static final int BOUND = 9;
+    public static final int LOOSE = 7;
+    public static final int MAXIMUM_EYES_ON_DICE = 5;
 
-	private static boolean notAWinner;
+    private static Random rand = new Random();
 
-	public static void main(String[] args) {
-		Game aGame = new Game();
-		
-		aGame.add("Chet");
-		aGame.add("Pat");
-		aGame.add("Sue");
-		
-		Random rand = new Random();
-	
-		do {
-			
-			aGame.roll(rand.nextInt(MAXIMUM_EYES_ON_DICE) + 1);
+    private static boolean notAWinner;
 
-			if (rand.nextInt(BOUND) == LOOSE) {
-				notAWinner = aGame.wrongAnswer();
-			} else {
-				notAWinner = aGame.wasCorrectlyAnswered();
-			}
-			
-			
-			
-		} while (notAWinner);
-		
-	}
+    public GameRunner(Random rand) {
+        this.rand = rand;
+    }
+
+    public static void main(String[] args) {
+        Game aGame = new Game();
+
+        aGame.add("Chet");
+        aGame.add("Pat");
+        aGame.add("Sue");
+
+
+        do {
+
+            aGame.roll(rand.nextInt(MAXIMUM_EYES_ON_DICE) + 1);
+
+            if (rand.nextInt(BOUND) == LOOSE) {
+                notAWinner = aGame.wrongAnswer();
+            } else {
+                notAWinner = aGame.wasCorrectlyAnswered();
+            }
+
+
+        } while (notAWinner);
+
+    }
 }

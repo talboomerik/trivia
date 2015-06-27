@@ -4,10 +4,10 @@ import com.adaptionsoft.games.trivia.runner.GameRunner;
 import org.approvaltests.Approvals;
 import org.junit.Test;
 
-import java.io.BufferedOutputStream;
-import java.io.FileOutputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.util.Arrays;
+import java.util.Random;
 
 public class GoldenMasterTest {
 
@@ -20,14 +20,35 @@ public class GoldenMasterTest {
 
     @Test
     public void verify_main() throws Exception {
-        String name = "gameOutput.txt";
-        PrintStream output = new PrintStream(new BufferedOutputStream(new FileOutputStream(name)), true);
+        ByteArrayOutputStream baout = new ByteArrayOutputStream();
+        PrintStream output = new PrintStream(baout);
         System.setOut(output);
 
-        GameRunner.main(new String[0]);
+        for (int index = 1; index < 5; index++) {
+            Random random = new OurRandom(index);
 
-        // Approvals.verifyAll("", names);
+            new GameRunner(random);
+            GameRunner.main(new String[0]);
+        }
+
+        String[] actual = baout.toString("UTF-8").split("\\n");
+
+        Approvals.verifyAll("", actual);
     }
+
+    private class OurRandom extends Random {
+        private int nextInt;
+
+        public OurRandom(int nextInt) {
+            this.nextInt = nextInt;
+        }
+
+        @Override
+        public int nextInt(int bound) {
+            return nextInt;
+        }
+    }
+
 }
 
 
