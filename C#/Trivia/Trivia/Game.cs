@@ -6,6 +6,7 @@ namespace Trivia
 {
     public class Game
     {
+        private readonly IConsole consoleWrapper;
         List<string> players = new List<string>();
 
         private const Int32 MaximumNumberOfPlayers = 6;
@@ -22,8 +23,9 @@ namespace Trivia
         int _currentPlayer = 0;
         bool _isGettingOutOfPenaltyBox;
 
-        public Game()
+        public Game(IConsole consoleWrapper)
         {
+            this.consoleWrapper = consoleWrapper;
             for (int i = 0; i < 50; i++)
             {
                 popQuestions.AddLast("Pop Question " + i);
@@ -118,7 +120,7 @@ namespace Trivia
 
         private void ConsoleWriteLine(string text)
         {
-            new ConsoleWrapper().ConsoleWriteLine(text);
+            consoleWrapper.ConsoleWriteLine(text);
         }
 
         private LinkedList<string> GetQuestionListForCurrentCategory()

@@ -2,7 +2,7 @@ using System;
 
 namespace Trivia
 {
-    public class ConsoleWrapper
+    public class ConsoleWrapper : IConsole
     {
         public void ConsoleWriteLine(string text)
         {
