@@ -68,13 +68,16 @@ namespace Trivia
 
             if (inPenaltyBox[_currentPlayer])
             {
-                if (roll % 2 != 0)
+                bool isRollOdd = roll % 2 != 0;
+                if (isRollOdd)
                 {
                     _isGettingOutOfPenaltyBox = true;
 
                     Console.WriteLine(players[_currentPlayer] + " is getting out of the penalty box");
                     boardPositions[_currentPlayer] = boardPositions[_currentPlayer] + roll;
-                    if (boardPositions[_currentPlayer] > 11) boardPositions[_currentPlayer] = boardPositions[_currentPlayer] - 12;
+
+                    bool boardHasReachedTheEnd = boardPositions[_currentPlayer] > 11;
+                    if (boardHasReachedTheEnd) boardPositions[_currentPlayer] = boardPositions[_currentPlayer] - 12;
 
                     Console.WriteLine(players[_currentPlayer]
                             + "'s new location is "
@@ -87,13 +90,14 @@ namespace Trivia
                     Console.WriteLine(players[_currentPlayer] + " is not getting out of the penalty box");
                     _isGettingOutOfPenaltyBox = false;
                 }
-
             }
             else
             {
 
                 boardPositions[_currentPlayer] = boardPositions[_currentPlayer] + roll;
-                if (boardPositions[_currentPlayer] > 11) boardPositions[_currentPlayer] = boardPositions[_currentPlayer] - 12;
+
+                bool boardHasReachedTheEnd = boardPositions[_currentPlayer] > 11;
+                if (boardHasReachedTheEnd) boardPositions[_currentPlayer] = boardPositions[_currentPlayer] - 12;
 
                 Console.WriteLine(players[_currentPlayer]
                         + "'s new location is "
@@ -158,19 +162,17 @@ namespace Trivia
 
                     bool winner = DidPlayerWin();
                     _currentPlayer++;
-                    if (_currentPlayer == players.Count) _currentPlayer = 0;
+                    if (currentPlayerIsLast()) _currentPlayer = 0;
 
                     return winner;
                 }
                 else
                 {
                     _currentPlayer++;
-                    if (_currentPlayer == players.Count) _currentPlayer = 0;
+                    if (currentPlayerIsLast()) _currentPlayer = 0;
+
                     return true;
                 }
-
-
-
             }
             else
             {
@@ -184,7 +186,7 @@ namespace Trivia
 
                 bool winner = DidPlayerWin();
                 _currentPlayer++;
-                if (_currentPlayer == players.Count) _currentPlayer = 0;
+                if (currentPlayerIsLast()) _currentPlayer = 0;
 
                 return winner;
             }
@@ -197,8 +199,13 @@ namespace Trivia
             inPenaltyBox[_currentPlayer] = true;
 
             _currentPlayer++;
-            if (_currentPlayer == players.Count) _currentPlayer = 0;
+            if (currentPlayerIsLast()) _currentPlayer = 0;
             return true;
+        }
+
+        private bool currentPlayerIsLast()
+        {
+            return _currentPlayer == players.Count;
         }
 
 
