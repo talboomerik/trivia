@@ -17,7 +17,7 @@ namespace Trivia
 
         public static void Main(String[] args)
         {
-            Game aGame = new Game();
+            Game aGame = new Game(new ConsoleWriter());
 
             aGame.AddPlayerWithName("Chet");
             aGame.AddPlayerWithName("Pat");
