@@ -66,30 +66,23 @@ public class Game {
         System.out.println("They have rolled a " + roll);
 
         if (isCurrentPlayerInPenaltyBox()) {
-            if (isOdd(roll)) {
-                isCurrentPlayerGettingOutOfPenaltyBox = true;
-                moveCurrentPlayer(roll);
+            isCurrentPlayerGettingOutOfPenaltyBox = isOdd(roll);
 
-                System.out.println(players.get(currentPlayer) + " is getting out of the penalty box");
-
-                System.out.println(players.get(currentPlayer)
-                        + "'s new location is "
-                        + places[currentPlayer]);
-                System.out.println("The category is " + currentCategory());
-            } else {
+            if (!isCurrentPlayerGettingOutOfPenaltyBox) {
                 System.out.println(players.get(currentPlayer) + " is not getting out of the penalty box");
-                isCurrentPlayerGettingOutOfPenaltyBox = false;
                 return;
             }
-
-        } else {
-            moveCurrentPlayer(roll);
-
-            System.out.println(players.get(currentPlayer)
-                    + "'s new location is "
-                    + places[currentPlayer]);
-            System.out.println("The category is " + currentCategory());
         }
+
+        moveCurrentPlayer(roll);
+        if (isCurrentPlayerInPenaltyBox()) {
+            System.out.println(players.get(currentPlayer) + " is getting out of the penalty box");
+        }
+
+        System.out.println(players.get(currentPlayer)
+                + "'s new location is "
+                + places[currentPlayer]);
+        System.out.println("The category is " + currentCategory());
 
         askQuestion();
     }
