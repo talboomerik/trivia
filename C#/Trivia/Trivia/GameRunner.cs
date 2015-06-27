@@ -3,42 +3,40 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-using UglyTrivia;
-
 namespace Trivia
 {
     public class GameRunner
     {
 
-        private static bool notAWinner;
+        private static bool _gameHasNoWinner;
 
         public static void Main(String[] args)
         {
             Game aGame = new Game();
 
-            aGame.add("Chet");
-            aGame.add("Pat");
-            aGame.add("Sue");
+            aGame.AddPlayer("Chet");
+            aGame.AddPlayer("Pat");
+            aGame.AddPlayer("Sue");
             
             Random rand = (args.Length == 0 ? new Random() : new Random(args[0].GetHashCode()));
 
             do
             {
 
-                aGame.roll(rand.Next(5) + 1);
+                aGame.MoveCurrentPlayer(rand.Next(5) + 1);
 
                 if (rand.Next(9) == 7)
                 {
-                    notAWinner = aGame.wrongAnswer();
+                    _gameHasNoWinner = aGame.WrongAnswer();
                 }
                 else
                 {
-                    notAWinner = aGame.wasCorrectlyAnswered();
+                    _gameHasNoWinner = aGame.WasCorrectlyAnswered();
                 }
 
 
 
-            } while (notAWinner);
+            } while (_gameHasNoWinner);
 
         }
 
