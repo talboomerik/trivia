@@ -163,7 +163,7 @@
 [162] = Sue's new location is 4
 [163] = The category is Pop
 [164] = Pop Question 1
-[165] = Answer was correct!!!!
+[165] = Answer was correct!!!
 [166] = Sue now has 1 Gold Coins.
 [167] = Chet is the current player
 [168] = They have rolled a 2
@@ -219,7 +219,7 @@
 [218] = Sue's new location is 7
 [219] = The category is Rock
 [220] = Rock Question 1
-[221] = Answer was correct!!!!
+[221] = Answer was correct!!!
 [222] = Sue now has 2 Gold Coins.
 [223] = Chet is the current player
 [224] = They have rolled a 1
