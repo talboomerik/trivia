@@ -4,10 +4,14 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 
 public class Game {
+    public static final int numberOfPlayers = 6;
+    public static final int numberOfPurses = 6;
+    public static final int numberOfPenaltyBoxes = 6;
+
     ArrayList players = new ArrayList();
-    int[] places = new int[6];
-    int[] purses  = new int[6];
-    boolean[] inPenaltyBox  = new boolean[6];
+    int[] places = new int[numberOfPlayers];
+    int[] purses  = new int[numberOfPurses];
+    boolean[] inPenaltyBox  = new boolean[numberOfPenaltyBoxes];
     
     LinkedList popQuestions = new LinkedList();
     LinkedList scienceQuestions = new LinkedList();
