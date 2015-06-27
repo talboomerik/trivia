@@ -69,8 +69,7 @@ namespace Trivia
 
             if (inPenaltyBox[_currentPlayer])
             {
-                bool isRollOdd = roll % 2 != 0;
-                if (isRollOdd)
+                if (IsRollOdd(roll))
                 {
                     _isGettingOutOfPenaltyBox = true;
 
@@ -107,6 +106,11 @@ namespace Trivia
                 AskQuestion();
             }
 
+        }
+
+        private bool IsRollOdd(int roll)
+        {
+            return roll % 2 != 0;
         }
 
         private void AskQuestion()
