@@ -19,13 +19,21 @@ public class Game {
     int[] purses = new int[NUMBER_OF_PLAYERS];
     boolean[] inPenaltyBox = new boolean[NUMBER_OF_PLAYERS];
 
+    private boolean[] isCurrentPlayerGettingOutOfPenaltyBox = new boolean[NUMBER_OF_PLAYERS];;
+    public boolean isCurrentPlayerGettingOutOfPenaltyBox() {
+        return isCurrentPlayerGettingOutOfPenaltyBox[currentPlayer];
+    }
+
+    public void setIsCurrentPlayerGettingOutOfPenaltyBox(boolean isCurrentPlayerGettingOutOfPenaltyBox) {
+        this.isCurrentPlayerGettingOutOfPenaltyBox[currentPlayer] = isCurrentPlayerGettingOutOfPenaltyBox;
+    }
+
     LinkedList popQuestions = new LinkedList();
     LinkedList scienceQuestions = new LinkedList();
     LinkedList sportsQuestions = new LinkedList();
-    LinkedList rockQuestions = new LinkedList();
 
+    LinkedList rockQuestions = new LinkedList();
     int currentPlayer = FIRST_PLAYER;
-    boolean isCurrentPlayerGettingOutOfPenaltyBox;
 
     public Game() {
         for (int i = 0; i < NUMBER_OF_QUESTIONS_PER_CATEGORY; i++) {
@@ -60,9 +68,9 @@ public class Game {
         System.out.println("They have rolled a " + roll);
 
         if (isCurrentPlayerInPenaltyBox()) {
-            isCurrentPlayerGettingOutOfPenaltyBox = isOdd(roll);
+            setIsCurrentPlayerGettingOutOfPenaltyBox(isOdd(roll));
 
-            if (isCurrentPlayerGettingOutOfPenaltyBox) {
+            if (isCurrentPlayerGettingOutOfPenaltyBox()) {
                 System.out.println(players.get(currentPlayer) + " is getting out of the penalty box");
             } else {
                 System.out.println(players.get(currentPlayer) + " is not getting out of the penalty box");
@@ -120,7 +128,7 @@ public class Game {
     }
 
     public boolean wasCorrectlyAnswered() {
-        if (isCurrentPlayerInPenaltyBox() && !isCurrentPlayerGettingOutOfPenaltyBox) {
+        if (isCurrentPlayerInPenaltyBox() && !isCurrentPlayerGettingOutOfPenaltyBox()) {
             changeToNextPlayer();
             return true;
         }
