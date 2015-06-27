@@ -18,5 +18,27 @@ namespace Tests.System
 
             Approvals.Verify(sw.ToString());
         }
+
+        [Test]
+        public void GameWhenRandomIsTwo()
+        {
+            StringWriter sw = new StringWriter();
+            Console.SetOut(sw);
+
+            GameRunner.Main(new string[] { "2" });
+
+            Approvals.Verify(sw.ToString());
+        }
+
+        [Test]
+        public void GameWhenRandomIsThree()
+        {
+            StringWriter sw = new StringWriter();
+            Console.SetOut(sw);
+
+            GameRunner.Main(new string[] { "3" });
+
+            Approvals.Verify(sw.ToString());
+        }
     }
 }
