@@ -4,14 +4,26 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 
 public class Game {
-    public static final int numberOfPlayers = 6;
-    public static final int numberOfPurses = 6;
-    public static final int numberOfPenaltyBoxes = 6;
+    public static final int NUMBER_OF_PLAYERS = 6;
+    public static final int NUMBER_OF_PURSES = 6;
+    public static final int NUMBER_OF_PENALTY_BOXES = 6;
+    public static final String POP_QUESTION = "Pop Question ";
+    public static final String SCIENCE_QUESTION = "Science Question ";
+    public static final String SPORTS_QUESTION = "Sports Question ";
+    public static final String ROCK_QUESTION = "Rock Question ";
+    public static final int QUESTIONS_COUNT_IN_EACH_CATEGORY = 50;
+    public static final int MINIMAL_NUMBER_OF_PLAYERS = 2;
+    public static final int NUMBER_OF_PLACES = 12;
+    public static final int NUMBER_OF_PLACES_MINUS_ONE = 11;
+    public static final String POP = "Pop";
+    public static final String SCIENCE = "Science";
+    public static final String SPORTS = "Sports";
+    public static final String ROCK = "Rock";
 
     ArrayList players = new ArrayList();
-    int[] places = new int[numberOfPlayers];
-    int[] purses  = new int[numberOfPurses];
-    boolean[] inPenaltyBox  = new boolean[numberOfPenaltyBoxes];
+    int[] places = new int[NUMBER_OF_PLAYERS];
+    int[] purses  = new int[NUMBER_OF_PURSES];
+    boolean[] inPenaltyBox  = new boolean[NUMBER_OF_PENALTY_BOXES];
     
     LinkedList popQuestions = new LinkedList();
     LinkedList scienceQuestions = new LinkedList();
@@ -22,25 +34,23 @@ public class Game {
     boolean isGettingOutOfPenaltyBox;
     
     public  Game(){
-    	for (int i = 0; i < 50; i++) {
-			popQuestions.addLast("Pop Question " + i);
-			scienceQuestions.addLast(("Science Question " + i));
-			sportsQuestions.addLast(("Sports Question " + i));
+    	for (int i = 0; i < QUESTIONS_COUNT_IN_EACH_CATEGORY; i++) {
+			popQuestions.addLast(POP_QUESTION + i);
+			scienceQuestions.addLast((SCIENCE_QUESTION + i));
+			sportsQuestions.addLast((SPORTS_QUESTION + i));
 			rockQuestions.addLast(createRockQuestion(i));
     	}
     }
 
 	public String createRockQuestion(int index){
-		return "Rock Question " + index;
+		return ROCK_QUESTION + index;
 	}
 	
 	public boolean isPlayable() {
-		return (howManyPlayers() >= 2);
+		return (howManyPlayers() >= MINIMAL_NUMBER_OF_PLAYERS);
 	}
 
 	public boolean add(String playerName) {
-		
-		
 	    players.add(playerName);
 	    places[howManyPlayers()] = 0;
 	    purses[howManyPlayers()] = 0;
@@ -65,7 +75,7 @@ public class Game {
 				
 				System.out.println(players.get(currentPlayer) + " is getting out of the penalty box");
 				places[currentPlayer] = places[currentPlayer] + roll;
-				if (places[currentPlayer] > 11) places[currentPlayer] = places[currentPlayer] - 12;
+				if (places[currentPlayer] > NUMBER_OF_PLACES_MINUS_ONE) places[currentPlayer] = places[currentPlayer] - NUMBER_OF_PLACES;
 				
 				System.out.println(players.get(currentPlayer) 
 						+ "'s new location is " 
@@ -80,7 +90,7 @@ public class Game {
 		} else {
 		
 			places[currentPlayer] = places[currentPlayer] + roll;
-			if (places[currentPlayer] > 11) places[currentPlayer] = places[currentPlayer] - 12;
+			if (places[currentPlayer] > NUMBER_OF_PLACES_MINUS_ONE) places[currentPlayer] = places[currentPlayer] - NUMBER_OF_PLACES;
 			
 			System.out.println(players.get(currentPlayer) 
 					+ "'s new location is " 
@@ -92,28 +102,28 @@ public class Game {
 	}
 
 	private void askQuestion() {
-		if (currentCategory() == "Pop")
+		if (currentCategory() == POP)
 			System.out.println(popQuestions.removeFirst());
-		if (currentCategory() == "Science")
+		if (currentCategory() == SCIENCE)
 			System.out.println(scienceQuestions.removeFirst());
-		if (currentCategory() == "Sports")
+		if (currentCategory() == SPORTS)
 			System.out.println(sportsQuestions.removeFirst());
-		if (currentCategory() == "Rock")
+		if (currentCategory() == ROCK)
 			System.out.println(rockQuestions.removeFirst());		
 	}
 	
 	
 	private String currentCategory() {
-		if (places[currentPlayer] == 0) return "Pop";
-		if (places[currentPlayer] == 4) return "Pop";
-		if (places[currentPlayer] == 8) return "Pop";
-		if (places[currentPlayer] == 1) return "Science";
-		if (places[currentPlayer] == 5) return "Science";
-		if (places[currentPlayer] == 9) return "Science";
-		if (places[currentPlayer] == 2) return "Sports";
-		if (places[currentPlayer] == 6) return "Sports";
-		if (places[currentPlayer] == 10) return "Sports";
-		return "Rock";
+		if (places[currentPlayer] == 0) return POP;
+		if (places[currentPlayer] == 4) return POP;
+		if (places[currentPlayer] == 8) return POP;
+		if (places[currentPlayer] == 1) return SCIENCE;
+		if (places[currentPlayer] == 5) return SCIENCE;
+		if (places[currentPlayer] == 9) return SCIENCE;
+		if (places[currentPlayer] == 2) return SPORTS;
+		if (places[currentPlayer] == 6) return SPORTS;
+		if (places[currentPlayer] == 10) return SPORTS;
+		return ROCK;
 	}
 
 	public boolean wasCorrectlyAnswered() {
