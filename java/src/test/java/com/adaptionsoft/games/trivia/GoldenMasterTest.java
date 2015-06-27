@@ -4,9 +4,12 @@ import com.adaptionsoft.games.trivia.runner.GameRunner;
 import org.approvaltests.Approvals;
 import org.junit.Test;
 
+import javax.naming.LinkLoopException;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Random;
 
 public class GoldenMasterTest {
@@ -24,8 +27,12 @@ public class GoldenMasterTest {
         PrintStream output = new PrintStream(baout);
         System.setOut(output);
 
-        for (int index = 1; index < 5; index++) {
-            Random random = new OurRandom(index);
+        List<Integer> seeds = new LinkedList<Integer>();
+        seeds.add(17);
+        seeds.add(42);
+
+        for (long seed : seeds) {
+            Random random = new Random(seed);
 
             new GameRunner(random);
             GameRunner.main(new String[0]);
@@ -35,22 +42,4 @@ public class GoldenMasterTest {
 
         Approvals.verifyAll("", actual);
     }
-
-    private class OurRandom extends Random {
-        private int nextInt;
-
-        public OurRandom(int nextInt) {
-            this.nextInt = nextInt;
-        }
-
-        @Override
-        public int nextInt(int bound) {
-            return nextInt;
-        }
-    }
-
 }
-
-
-
-
