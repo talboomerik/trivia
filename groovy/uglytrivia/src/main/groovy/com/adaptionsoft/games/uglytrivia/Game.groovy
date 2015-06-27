@@ -15,7 +15,7 @@ public class Game {
 	def isGettingOutOfPenaltyBox;
 
 	public Game() {
-		for (def i = 0; i < 50; i++) {
+		(1..50).each {i->
 			popQuestions.add("Pop Question $i")
 			scienceQuestions.add(("Science Question $i"))
 			sportsQuestions.add(("Sports Question $i"))
