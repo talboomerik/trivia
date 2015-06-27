@@ -14,8 +14,6 @@ public class Game {
     public static final String ROCK_QUESTION = "Rock Question ";
     public static final int QUESTIONS_COUNT_IN_EACH_CATEGORY = 50;
     public static final int MINIMAL_NUMBER_OF_PLAYERS = 2;
-    public static final int NUMBER_OF_PLACES = 12;
-    public static final int NUMBER_OF_PLACES_MINUS_ONE = 11;
     public static final String POP = "Pop";
     public static final String SCIENCE = "Science";
     public static final String SPORTS = "Sports";
@@ -24,7 +22,7 @@ public class Game {
     public static final boolean GAME_NOT_OVER = true;
     ArrayList players = new ArrayList();
 
-    int[] places = new int[NUMBER_OF_PLAYERS];
+    public int[] places = new int[NUMBER_OF_PLAYERS];
     int[] purses = new int[NUMBER_OF_PURSES];
     public boolean[] inPenaltyBox = new boolean[NUMBER_OF_PENALTY_BOXES];
     LinkedList popQuestions = new LinkedList();
@@ -97,8 +95,8 @@ public class Game {
 
     private void startNormalTurn(int roll) {
         places[currentPlayer] = places[currentPlayer] + roll;
-        if (places[currentPlayer] > NUMBER_OF_PLACES_MINUS_ONE)
-            places[currentPlayer] = places[currentPlayer] - NUMBER_OF_PLACES;
+        if (places[currentPlayer] > 11)
+            places[currentPlayer] = places[currentPlayer] - 12;
 
         outputPrintStream.println(players.get(currentPlayer)
                 + "'s new location is "
