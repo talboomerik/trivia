@@ -1,0 +1,16 @@
+apply plugin: 'groovy'
+apply plugin: 'idea'
+apply plugin: 'application'
+
+mainClassName = "com.adaptionsoft.games.trivia.runner.GameRunner"
+
+version = '1.0'
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	compile 'org.codehaus.groovy:groovy-all:2.3.3'
+	testCompile 'org.spockframework:spock-core:0.7-groovy-2.0'
+}
