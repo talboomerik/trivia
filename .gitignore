@@ -1,5 +1,8 @@
 scala/.idea/
 scala/scala.iml
 scala/out/
-*.suo
 *.class
+
+#Visual Studio exclusions
+*.suo
+*.csproj.user
