@@ -3,7 +3,7 @@ using Trivia;
 
 namespace Tests.Unit
 {
-    public class SomeClass
+    public class DiceComputationTests
     {
         [Test]
         public void OneIsOdd()
