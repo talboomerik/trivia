@@ -15,11 +15,11 @@ public class Game {
 	def isGettingOutOfPenaltyBox;
 
 	public Game() {
-		(1..50).each {i->
-			popQuestions.add("Pop Question $i")
-			scienceQuestions.add(("Science Question $i"))
-			sportsQuestions.add(("Sports Question $i"))
-			rockQuestions.add(createRockQuestion(i))
+		(1..50).each {
+			popQuestions.add("Pop Question $it")
+			scienceQuestions.add(("Science Question $it"))
+			sportsQuestions.add(("Sports Question $it"))
+			rockQuestions.add(createRockQuestion(it))
 		}
 	}
 
