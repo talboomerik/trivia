@@ -95,7 +95,6 @@ namespace Trivia
             }
             else
             {
-
                 boardPositions[_currentPlayer] = boardPositions[_currentPlayer] + roll;
 
                 bool boardHasReachedTheEnd = boardPositions[_currentPlayer] > 11;
@@ -156,12 +155,15 @@ namespace Trivia
                 return true;
             }
 
+            string message = "";
             if (inPenaltyBox[_currentPlayer] && _isGettingOutOfPenaltyBox)
             {
-                    return MoveOutOfPenaltyBox("Answer was correct!!!!");
+                message = "Answer was correct!!!!";
             }
+            else
+                message = "Answer was corrent!!!!";
 
-            return MoveOutOfPenaltyBox("Answer was corrent!!!!");
+            return MoveOutOfPenaltyBox(message);
         }
 
         private bool MoveOutOfPenaltyBox(string message)
@@ -173,7 +175,6 @@ namespace Trivia
 
             return continuePlaying;
         }
-
 
         private void GoToNextPlayer()
         {
@@ -191,15 +192,14 @@ namespace Trivia
                               + " Gold Coins.");
         }
 
-
         public bool WrongAnswer()
         {
             Console.WriteLine("Question was incorrectly answered");
             Console.WriteLine(players[_currentPlayer] + " was sent to the penalty box");
             inPenaltyBox[_currentPlayer] = true;
 
-            _currentPlayer++;
-            if (currentPlayerIsLast()) _currentPlayer = 0;
+            GoToNextPlayer();
+
             return true;
         }
 
@@ -214,5 +214,4 @@ namespace Trivia
             return !currentPlayerWonSixPoints;
         }
     }
-
 }
