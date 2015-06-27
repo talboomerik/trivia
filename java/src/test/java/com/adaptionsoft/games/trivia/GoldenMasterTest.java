@@ -3,38 +3,44 @@ package com.adaptionsoft.games.trivia;
 import com.adaptionsoft.games.trivia.runner.GameRunner;
 import org.approvaltests.Approvals;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
-import java.util.stream.Collectors;
 
+@RunWith(Parameterized.class)
 public class GoldenMasterTest {
+
+    private long seed;
+
+    public GoldenMasterTest(long seed) {
+        this.seed = seed;
+    }
+
+    @Parameterized.Parameters
+    public static Collection<Long[]> seeds() {
+        return arrayToListOfLongArrays(new long[]{12341234L, 12341234L, 1234256336L, 4667687L, 435345L, 7657757L, 9800890890L, 3453253L, 576757L});
+    }
 
     @Test
     public void randomInputsCheck() throws Exception {
-        List<Long> seeds = arrayToList(new long[]{12341234L, 12341234L, 1234256336L, 4667687L, 435345L, 7657757L, 9800890890L, 3453253L, 576757L});
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        PrintStream myPrintStream = new PrintStream(byteArrayOutputStream);
 
-        List<String> systemOutput = seeds.stream().map(
-                seed ->
-                {
-                    ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-                    PrintStream myPrintStream = new PrintStream(byteArrayOutputStream);
+        GameRunner.runGame(seed, myPrintStream);
 
-                    GameRunner.runGame(seed, myPrintStream);
-
-                    return byteArrayOutputStream.toString();
-                }
-        ).collect(Collectors.toList());
-
-        Approvals.verifyAll("", systemOutput);
+        String systemOutput = byteArrayOutputStream.toString();
+        Approvals.verify(systemOutput);
     }
 
-    private List<Long> arrayToList(long[] array) {
-        List<Long> seeds  = new ArrayList<>();
-        for(long value : array) {
-            seeds.add(value);
+    private static List<Long[]> arrayToListOfLongArrays(long[] array) {
+        List<Long[]> seeds = new ArrayList<>();
+        for (long value : array) {
+            seeds.add(new Long[]{value});
         }
         return seeds;
     }
