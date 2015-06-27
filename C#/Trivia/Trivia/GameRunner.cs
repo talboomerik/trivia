@@ -9,6 +9,9 @@ namespace Trivia
 {
     public class GameRunner
     {
+        private const int CorrectGuessProbability = 9;
+        private const int WrongGuess = 7;
+        private const int NumberOfDieSides = 5;
 
         private static bool gameIsRunning;
 
@@ -25,9 +28,9 @@ namespace Trivia
             do
             {
 
-                aGame.roll(rand.Next(5) + 1);
+                aGame.roll(rand.Next(NumberOfDieSides) + 1);
 
-                if (rand.Next(9) == 7)
+                if (rand.Next(CorrectGuessProbability) == WrongGuess)
                 {
                     gameIsRunning = aGame.wrongAnswer();
                 }
