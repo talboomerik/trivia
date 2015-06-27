@@ -17,32 +17,7 @@ namespace Trivia
 
         public static void Main(String[] args)
         {
-            Game aGame = new Game(new ConsoleWriter());
-
-            aGame.AddPlayerWithName("Chet");
-            aGame.AddPlayerWithName("Pat");
-            aGame.AddPlayerWithName("Sue");
-            
-            Random rand = (args.Length == 0 ? new Random() : new Random(args[0].GetHashCode()));
-
-            do
-            {
-
-                aGame.Roll(rand.Next(NumberOfDieSides) + 1);
-
-                if (rand.Next(CorrectGuessProbability) == WrongGuess)
-                {
-                    gameIsRunning = aGame.wrongAnswer();
-                }
-                else
-                {
-                    gameIsRunning = aGame.wasCorrectlyAnswered();
-                }
-
-
-
-            } while (gameIsRunning);
-
+            GameLoop(args, new ConsoleWriter());
         }
 
         public static void GameLoop(String[] args, ConsoleWriter consoleWriter)

@@ -110,6 +110,7 @@
   <ItemGroup>
     <Content Include="CharacterisationTests.GoldenMaster.approved.txt" />
     <Content Include="CharacterisationTests.GoldenMaster2.approved.txt" />
+    <Content Include="CharacterisationTests.GoldenMaster3.approved.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
