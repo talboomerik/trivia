@@ -29,13 +29,9 @@ public class GoldenMasterTest {
                 {
                     ByteArrayOutputStream baos = new ByteArrayOutputStream();
                     PrintStream myPrintStream = new PrintStream(baos);
-                    PrintStream old = System.out;
-                    System.setOut(myPrintStream);
 
-                    GameRunner.runGame(seed);
+                    GameRunner.runGame(seed, myPrintStream);
 
-                    System.out.flush();
-                    System.setOut(old);
                     return baos.toString();
                 }
         ).collect(Collectors.toList());

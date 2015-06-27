@@ -38,14 +38,14 @@ public class Game {
 
     private final PrintStream output_print_stream;
 
-    public  Game(){
+    public  Game(PrintStream output_print_stream){
     	for (int i = 0; i < QUESTIONS_COUNT_IN_EACH_CATEGORY; i++) {
 			popQuestions.addLast(POP_QUESTION + i);
 			scienceQuestions.addLast((SCIENCE_QUESTION + i));
 			sportsQuestions.addLast((SPORTS_QUESTION + i));
 			rockQuestions.addLast(createRockQuestion(i));
     	}
-        output_print_stream = System.out;
+        this.output_print_stream = output_print_stream;
     }
 
 	public String createRockQuestion(int index){

@@ -2,6 +2,7 @@
 package com.adaptionsoft.games.trivia.runner;
 import com.adaptionsoft.games.uglytrivia.Game;
 
+import java.io.PrintStream;
 import java.util.Random;
 
 
@@ -11,11 +12,12 @@ public class GameRunner {
 
 	public static void main(String[] args) {
         long randomSeed = System.currentTimeMillis();
-        runGame(randomSeed);
+        PrintStream output_print_stream = System.out;
+        runGame(randomSeed, output_print_stream);
 	}
 
-    public static void runGame(long randomSeed) {
-        Game aGame = new Game();
+    public static void runGame(long randomSeed, PrintStream output_print_stream) {
+        Game aGame = new Game(output_print_stream);
 
         aGame.add("Chet");
         aGame.add("Pat");
