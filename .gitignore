@@ -1,5 +1,9 @@
 scala/.idea/
 scala/scala.iml
 scala/out/
+
 *.suo
 *.class
+_Resharper*
+bin
+obj
