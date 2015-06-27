@@ -109,26 +109,32 @@ namespace Trivia
 
         private void AskQuestion()
         {
-            if (CurrentCategory() == "Pop")
-            {
-                Console.WriteLine(popQuestions.First());
-                popQuestions.RemoveFirst();
-            }
-            if (CurrentCategory() == "Science")
-            {
-                Console.WriteLine(scienceQuestions.First());
-                scienceQuestions.RemoveFirst();
-            }
-            if (CurrentCategory() == "Sports")
-            {
-                Console.WriteLine(sportsQuestions.First());
-                sportsQuestions.RemoveFirst();
-            }
-            if (CurrentCategory() == "Rock")
-            {
-                Console.WriteLine(rockQuestions.First());
-                rockQuestions.RemoveFirst();
-            }
+            LinkedList<string> questionList = GetQuestionListForCurrentCategory();
+
+            string currentQuestion = questionList.First();
+            ConsoleWriteLine(currentQuestion);
+            questionList.RemoveFirst();
+        }
+
+        private void ConsoleWriteLine(string text)
+        {
+            new ConsoleWrapper().ConsoleWriteLine(text);
+        }
+
+        private LinkedList<string> GetQuestionListForCurrentCategory()
+        {
+            Dictionary<string, LinkedList<string>> questionCategories = GetQuestionCategoryTypes();
+            return questionCategories[CurrentCategory()];
+        }
+
+        private Dictionary<string, LinkedList<string>> GetQuestionCategoryTypes()
+        {
+            Dictionary<string, LinkedList<string>> questionCategories = new Dictionary<string, LinkedList<string>>();
+            questionCategories.Add("Pop", popQuestions);
+            questionCategories.Add("Science", scienceQuestions);
+            questionCategories.Add("Sports", sportsQuestions);
+            questionCategories.Add("Rock", rockQuestions);
+            return questionCategories;
         }
 
         private String CurrentCategory()
