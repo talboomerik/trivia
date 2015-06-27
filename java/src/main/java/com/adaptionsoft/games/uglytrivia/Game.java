@@ -127,6 +127,15 @@ public class Game {
 
     public boolean wasCorrectlyAnswered() {
         if (isCurrentPlayerInPenaltyBox()) {
+            if (!isCurrentPlayerGettingOutOfPenaltyBox) {
+                currentPlayer++;
+                if (currentPlayer == players.size())
+                    currentPlayer = FIRST_PLAYER;
+                return true;
+            }
+        }
+
+        if (isCurrentPlayerInPenaltyBox()) {
             if (isCurrentPlayerGettingOutOfPenaltyBox) {
                 System.out.println("Answer was correct!!!");
                 purses[currentPlayer]++;
@@ -141,11 +150,6 @@ public class Game {
                     currentPlayer = FIRST_PLAYER;
 
                 return winner;
-            } else {
-                currentPlayer++;
-                if (currentPlayer == players.size())
-                    currentPlayer = FIRST_PLAYER;
-                return true;
             }
         } else {
             System.out.println("Answer was correct!!!");
@@ -157,10 +161,13 @@ public class Game {
 
             boolean winner = didPlayerWin();
             currentPlayer++;
-            if (currentPlayer == players.size()) currentPlayer = FIRST_PLAYER;
+            if (currentPlayer == players.size())
+                currentPlayer = FIRST_PLAYER;
 
             return winner;
         }
+
+        return false;
     }
 
     public boolean wrongAnswer() {
