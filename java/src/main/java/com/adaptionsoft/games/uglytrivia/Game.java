@@ -20,6 +20,7 @@ public class Game {
     public static final String ROCK = "Rock";
     public static final int FIRST_PLAYER = 0;
     public static final boolean GAME_NOT_OVER = true;
+    public static final int BOARD_SIZE = 12;
     ArrayList players = new ArrayList();
 
     public int[] places = new int[NUMBER_OF_PLAYERS];
@@ -81,22 +82,19 @@ public class Game {
     }
 
     private void startTurnInPenaltyBox(int roll) {
-        boolean getOutOfPenaltyBox = (roll % 2 != 0);
-        if (getOutOfPenaltyBox) {
-            isGettingOutOfPenaltyBox = true;
-
+        isGettingOutOfPenaltyBox = (roll % 2 != 0);
+        if (isGettingOutOfPenaltyBox) {
             outputPrintStream.println(players.get(currentPlayer) + " is getting out of the penalty box");
             startNormalTurn(roll);
         } else {
             outputPrintStream.println(players.get(currentPlayer) + " is not getting out of the penalty box");
-            isGettingOutOfPenaltyBox = false;
         }
     }
 
     private void startNormalTurn(int roll) {
         places[currentPlayer] = places[currentPlayer] + roll;
-        if (places[currentPlayer] > 11)
-            places[currentPlayer] = places[currentPlayer] - 12;
+        if (places[currentPlayer] > BOARD_SIZE - 1)
+            places[currentPlayer] = places[currentPlayer] - BOARD_SIZE;
 
         outputPrintStream.println(players.get(currentPlayer)
                 + "'s new location is "
