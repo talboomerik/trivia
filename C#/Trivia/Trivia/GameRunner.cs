@@ -39,8 +39,6 @@ namespace Trivia
             } while (_gameHasNoWinner);
 
         }
-
-
     }
 
 }

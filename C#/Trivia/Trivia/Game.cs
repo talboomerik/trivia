@@ -6,8 +6,6 @@ namespace Trivia
 {
     public class Game
     {
-
-
         List<string> players = new List<string>();
 
         private const Int32 MaximumNumberOfPlayers = 6;
