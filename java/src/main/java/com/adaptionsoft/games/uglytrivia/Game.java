@@ -15,12 +15,12 @@ public class Game {
     public static final int WINNING_AMOUNT = 6;
     public static final int NUMBER_OF_PLACES = 12;
 
-    List<String> players = new ArrayList<String>();
+    List<Player> players = new ArrayList<Player>();
 
     int currentPlayer = FIRST_PLAYER;
 
     private String getCurrentPlayerName() {
-        return players.get(currentPlayer);
+        return players.get(currentPlayer).getName();
     }
 
     int[] places = new int[NUMBER_OF_PLAYERS];
@@ -61,7 +61,7 @@ public class Game {
     }
 
     public boolean add(String playerName) {
-        players.add(playerName);
+        players.add(new Player(playerName));
         places[howManyPlayers()] = 0;
         purses[howManyPlayers()] = 0;
         inPenaltyBox[howManyPlayers()] = false;
