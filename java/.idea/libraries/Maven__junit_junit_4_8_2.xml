@@ -8,6 +8,7 @@
     </JAVADOC>
     <SOURCES>
       <root url="jar://$MAVEN_REPOSITORY$/junit/junit/4.8.2/junit-4.8.2-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/ApprovalTests.jar!/" />
     </SOURCES>
   </library>
 </component>
