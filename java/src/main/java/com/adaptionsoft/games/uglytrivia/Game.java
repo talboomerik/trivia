@@ -19,6 +19,8 @@ public class Game {
     public static final String SCIENCE = "Science";
     public static final String SPORTS = "Sports";
     public static final String ROCK = "Rock";
+    public static final int FIRST_PLAYER = 0;
+    public static final boolean GAME_NOT_OVER = true;
 
     ArrayList players = new ArrayList();
     int[] places = new int[NUMBER_OF_PLAYERS];
@@ -131,20 +133,20 @@ public class Game {
 			if (isGettingOutOfPenaltyBox) {
 				System.out.println("Answer was correct!!!!");
 				purses[currentPlayer]++;
-				System.out.println(players.get(currentPlayer) 
-						+ " now has "
-						+ purses[currentPlayer]
-						+ " Gold Coins.");
+				System.out.println(players.get(currentPlayer)
+                        + " now has "
+                        + purses[currentPlayer]
+                        + " Gold Coins.");
 				
-				boolean winner = didPlayerWin();
+				boolean gameIsOver = didPlayerWin();
 				currentPlayer++;
-				if (currentPlayer == players.size()) currentPlayer = 0;
+				if (currentPlayer == players.size()) currentPlayer = FIRST_PLAYER;
 				
-				return winner;
+				return gameIsOver;
 			} else {
 				currentPlayer++;
-				if (currentPlayer == players.size()) currentPlayer = 0;
-				return true;
+				if (currentPlayer == players.size()) currentPlayer = FIRST_PLAYER;
+				return GAME_NOT_OVER;
 			}
 			
 			
@@ -160,8 +162,8 @@ public class Game {
 			
 			boolean winner = didPlayerWin();
 			currentPlayer++;
-			if (currentPlayer == players.size()) currentPlayer = 0;
-			
+			if (currentPlayer == players.size()) currentPlayer = FIRST_PLAYER;
+
 			return winner;
 		}
 	}
@@ -172,7 +174,7 @@ public class Game {
 		inPenaltyBox[currentPlayer] = true;
 		
 		currentPlayer++;
-		if (currentPlayer == players.size()) currentPlayer = 0;
+		if (currentPlayer == players.size()) currentPlayer = FIRST_PLAYER;
 		return true;
 	}
 
