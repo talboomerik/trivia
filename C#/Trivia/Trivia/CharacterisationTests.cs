@@ -6,6 +6,7 @@ using System.Text;
 using ApprovalTests;
 using ApprovalTests.Reporters;
 using NUnit.Framework;
+using UglyTrivia;
 
 namespace Trivia
 {
@@ -19,7 +20,7 @@ namespace Trivia
             var sb = new StringBuilder();
             var capturedOutput = new StringWriter(sb);
             Console.SetOut(capturedOutput);
-            GameRunner.Main(new []{"ANY STRING HERE"});
+            GameRunner.GameLoop(new []{"ANY STRING HERE"}, new ConsoleWriter());
 
             Approvals.Verify(sb.ToString());
         }
@@ -31,7 +32,7 @@ namespace Trivia
             var sb = new StringBuilder();
             var capturedOutput = new StringWriter(sb);
             Console.SetOut(capturedOutput);
-            GameRunner.Main(new []{"any other plain old string111!!!&"});
+            GameRunner.GameLoop(new []{"any other plain old string111!!!&"}, new ConsoleWriter());
 
             Approvals.Verify(sb.ToString());
         }

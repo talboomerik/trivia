@@ -30,20 +30,6 @@ namespace UglyTrivia
         bool isGettingOutOfPenaltyBox;
         private int StartingPlace;
 
-        public Game()
-        {
-            _console = new ConsoleWriter();
-
-            for (int i = 0; i < NumberOfQuestionsPerCategory; i++)
-            {
-                popQuestions.AddLast("Pop Question " + i);
-                scienceQuestions.AddLast(("Science Question " + i));
-                sportsQuestions.AddLast(("Sports Question " + i));
-                rockQuestions.AddLast(createRockQuestion(i));
-            }
-            StartingPlace = 0;
-        }
-
         public Game(ConsoleWriter writer) 
         {
             _console = writer;
