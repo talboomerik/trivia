@@ -101,13 +101,13 @@ public class Game {
     }
 
     private void askQuestion() {
-        if (currentCategory() == QUESTION_CATEGORY_POP)
+        if (currentCategory().equals(QUESTION_CATEGORY_POP))
             System.out.println(popQuestions.removeFirst());
-        if (currentCategory() == QUESTION_CATEGORY_SCIENCE)
+        if (currentCategory().equals(QUESTION_CATEGORY_SCIENCE))
             System.out.println(scienceQuestions.removeFirst());
-        if (currentCategory() == QUESTION_CATEGORY_SPORTS)
+        if (currentCategory().equals(QUESTION_CATEGORY_SPORTS))
             System.out.println(sportsQuestions.removeFirst());
-        if (currentCategory() == QUESTION_CATEGORY_ROCK)
+        if (currentCategory().equals(QUESTION_CATEGORY_ROCK))
             System.out.println(rockQuestions.removeFirst());
     }
 
