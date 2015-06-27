@@ -1,4 +1,5 @@
 using NUnit.Framework;
+using Trivia;
 
 namespace Tests.Unit
 {
@@ -9,19 +10,15 @@ namespace Tests.Unit
         {
             int input = 1;
 
-            bool isOdd = !IsEven(input);
-            
-            Assert.AreEqual(true, isOdd);
+            Assert.IsTrue(DiceComputation.IsOdd(input));
         }
 
         [Test]
         public void ThreeIsOdd()
         {
             int input = 3;
-            
-            bool isOdd = !IsEven(input); 
 
-            Assert.AreEqual(true, isOdd);
+            Assert.IsTrue(DiceComputation.IsOdd(input));
         }
 
         [Test]
@@ -29,9 +26,7 @@ namespace Tests.Unit
         {
             int input = 5;
 
-            bool isOdd = !IsEven(input); 
-
-            Assert.AreEqual(true, isOdd);
+            Assert.IsTrue(DiceComputation.IsOdd(input));
         }
 
         [Test]
@@ -39,9 +34,7 @@ namespace Tests.Unit
         {
             int input = 2;
 
-            bool isOdd = !IsEven(input);
-
-            Assert.AreEqual(false, isOdd);
+            Assert.IsFalse(DiceComputation.IsOdd(input));
         }
 
         [Test]
@@ -49,19 +42,7 @@ namespace Tests.Unit
         {
             int input = 4;
 
-            bool isOdd = !IsEven(input);
-
-            Assert.AreEqual(false, isOdd);
-        }
-
-        [Test]
-        public void SixIsNotOdd()
-        {
-            int input = 6;
-
-            bool isOdd = !IsEven(input);
-
-            Assert.AreEqual(false, isOdd);
+            Assert.IsFalse(DiceComputation.IsOdd(input));
         }
 
         [Test]
@@ -69,14 +50,7 @@ namespace Tests.Unit
         {
             int input = 6;
 
-            bool isEven = IsEven(input);
-            
-            Assert.AreEqual(true, isEven);
-        }
-
-        private static bool IsEven(int input)
-        {
-            return  (input / 2) * 2 == input;
+            Assert.IsFalse(DiceComputation.IsOdd(input));
         }
     }
 }

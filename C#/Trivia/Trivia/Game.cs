@@ -69,7 +69,7 @@ namespace Trivia
 
             if (inPenaltyBox[_currentPlayer])
             {
-                if (IsRollOdd(roll))
+                if (DiceComputation.IsOdd(roll))
                 {
                     _isGettingOutOfPenaltyBox = true;
 
@@ -105,12 +105,6 @@ namespace Trivia
                 Console.WriteLine("The category is " + CurrentCategory());
                 AskQuestion();
             }
-
-        }
-
-        private bool IsRollOdd(int roll)
-        {
-            return roll % 2 != 0;
         }
 
         private void AskQuestion()
