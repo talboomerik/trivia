@@ -31,7 +31,7 @@ namespace Trivia
                 }
                 else
                 {
-                    _gameHasNoWinner = aGame.WasCorrectlyAnswered();
+                    _gameHasNoWinner = aGame.ContinuePlaying();
                 }
 
 

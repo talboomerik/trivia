@@ -114,13 +114,8 @@ namespace Trivia
             LinkedList<string> questionList = GetQuestionListForCurrentCategory();
 
             string currentQuestion = questionList.First();
-            ConsoleWriteLine(currentQuestion);
+            consoleWrapper.ConsoleWriteLine(currentQuestion);
             questionList.RemoveFirst();
-        }
-
-        private void ConsoleWriteLine(string text)
-        {
-            consoleWrapper.ConsoleWriteLine(text);
         }
 
         private LinkedList<string> GetQuestionListForCurrentCategory()
@@ -153,50 +148,49 @@ namespace Trivia
             return "Rock";
         }
 
-        public bool WasCorrectlyAnswered()
+        public bool ContinuePlaying()
         {
-            if (inPenaltyBox[_currentPlayer])
+            if (inPenaltyBox[_currentPlayer] && !_isGettingOutOfPenaltyBox)
             {
-                if (_isGettingOutOfPenaltyBox)
-                {
-                    Console.WriteLine("Answer was correct!!!!");
-                    victoryPoints[_currentPlayer]++;
-                    Console.WriteLine(players[_currentPlayer]
-                            + " now has "
-                            + victoryPoints[_currentPlayer]
-                            + " Gold Coins.");
-
-                    bool winner = DidPlayerWin();
-                    _currentPlayer++;
-                    if (currentPlayerIsLast()) _currentPlayer = 0;
-
-                    return winner;
-                }
-                else
-                {
-                    _currentPlayer++;
-                    if (currentPlayerIsLast()) _currentPlayer = 0;
-
-                    return true;
-                }
+                GoToNextPlayer();
+                return true;
             }
-            else
+
+            if (inPenaltyBox[_currentPlayer] && _isGettingOutOfPenaltyBox)
             {
-
-                Console.WriteLine("Answer was corrent!!!!");
-                victoryPoints[_currentPlayer]++;
-                Console.WriteLine(players[_currentPlayer]
-                        + " now has "
-                        + victoryPoints[_currentPlayer]
-                        + " Gold Coins.");
-
-                bool winner = DidPlayerWin();
-                _currentPlayer++;
-                if (currentPlayerIsLast()) _currentPlayer = 0;
-
-                return winner;
+                    return MoveOutOfPenaltyBox("Answer was correct!!!!");
             }
+
+            return MoveOutOfPenaltyBox("Answer was corrent!!!!");
         }
+
+        private bool MoveOutOfPenaltyBox(string message)
+        {
+            AwardCoin(message);
+
+            bool continuePlaying = PlayerDidNotWin();
+            GoToNextPlayer();
+
+            return continuePlaying;
+        }
+
+
+        private void GoToNextPlayer()
+        {
+            _currentPlayer++;
+            if (currentPlayerIsLast()) _currentPlayer = 0;
+        }
+
+        private void AwardCoin(string message)
+        {
+            Console.WriteLine(message);
+            victoryPoints[_currentPlayer]++;
+            Console.WriteLine(players[_currentPlayer]
+                              + " now has "
+                              + victoryPoints[_currentPlayer]
+                              + " Gold Coins.");
+        }
+
 
         public bool WrongAnswer()
         {
@@ -214,7 +208,7 @@ namespace Trivia
             return _currentPlayer == players.Count;
         }
 
-        private bool DidPlayerWin()
+        private bool PlayerDidNotWin()
         {
             bool currentPlayerWonSixPoints = victoryPoints[_currentPlayer] == 6;
             return !currentPlayerWonSixPoints;
