@@ -25,7 +25,6 @@ public class Game {
 
     int[] places = new int[NUMBER_OF_PLAYERS];
 
-    int[] purses = new int[NUMBER_OF_PLAYERS];
     boolean[] inPenaltyBox = new boolean[NUMBER_OF_PLAYERS];
 
     private boolean[] isCurrentPlayerGettingOutOfPenaltyBox = new boolean[NUMBER_OF_PLAYERS];;
@@ -63,7 +62,6 @@ public class Game {
     public boolean add(String playerName) {
         players.add(new Player(playerName));
         places[howManyPlayers()] = 0;
-        purses[howManyPlayers()] = 0;
         inPenaltyBox[howManyPlayers()] = false;
 
         System.out.println(playerName + " was added");
@@ -146,10 +144,13 @@ public class Game {
         }
 
         System.out.println("Answer was correct!!!");
-        purses[currentPlayer]++;
+
+        Player player = players.get(currentPlayer);
+        player.increasePurse();
+
         System.out.println(getCurrentPlayerName()
                 + " now has "
-                + purses[currentPlayer]
+                + player.getPurse()
                 + " Gold Coins.");
 
         boolean winner = didPlayerWin();
@@ -174,6 +175,8 @@ public class Game {
     }
 
     private boolean didPlayerWin() {
-        return !(purses[currentPlayer] == WINNING_AMOUNT);
+        Player player = players.get(currentPlayer);
+
+        return !(player.getPurse() == WINNING_AMOUNT);
     }
 }
