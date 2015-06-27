@@ -76,7 +76,7 @@ namespace Tests.Unit
 
         private static bool IsEven(int input)
         {
-            return ( ((input / 2) * 2) == input);
+            return  (input / 2) * 2 == input;
         }
     }
 }
