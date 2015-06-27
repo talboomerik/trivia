@@ -19,16 +19,16 @@ namespace Trivia
         {
             Game aGame = new Game();
 
-            aGame.add("Chet");
-            aGame.add("Pat");
-            aGame.add("Sue");
+            aGame.AddPlayerWithName("Chet");
+            aGame.AddPlayerWithName("Pat");
+            aGame.AddPlayerWithName("Sue");
             
             Random rand = (args.Length == 0 ? new Random() : new Random(args[0].GetHashCode()));
 
             do
             {
 
-                aGame.roll(rand.Next(NumberOfDieSides) + 1);
+                aGame.Roll(rand.Next(NumberOfDieSides) + 1);
 
                 if (rand.Next(CorrectGuessProbability) == WrongGuess)
                 {

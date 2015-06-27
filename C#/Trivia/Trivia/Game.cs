@@ -7,6 +7,9 @@ namespace UglyTrivia
 {
     public class Game
     {
+        private const int NumberOfQuestionsPerCategory = 50;
+        private const int MinimumNumberOfPlayers = 2;
+        private const int StartingPurse = 0;
 
 
         List<string> players = new List<string>();
@@ -23,16 +26,18 @@ namespace UglyTrivia
 
         int currentPlayer = 0;
         bool isGettingOutOfPenaltyBox;
+        private int StartingPlace;
 
         public Game()
         {
-            for (int i = 0; i < 50; i++)
+            for (int i = 0; i < NumberOfQuestionsPerCategory; i++)
             {
                 popQuestions.AddLast("Pop Question " + i);
                 scienceQuestions.AddLast(("Science Question " + i));
                 sportsQuestions.AddLast(("Sports Question " + i));
                 rockQuestions.AddLast(createRockQuestion(i));
             }
+            StartingPlace = 0;
         }
 
         public String createRockQuestion(int index)
@@ -42,29 +47,29 @@ namespace UglyTrivia
 
         public bool isPlayable()
         {
-            return (howManyPlayers() >= 2);
+            return (NumberOfPlayers() >= MinimumNumberOfPlayers);
         }
 
-        public bool add(String playerName)
+        public bool AddPlayerWithName(String playerName)
         {
 
 
             players.Add(playerName);
-            places[howManyPlayers()] = 0;
-            purses[howManyPlayers()] = 0;
-            inPenaltyBox[howManyPlayers()] = false;
+            places[NumberOfPlayers()] = StartingPlace;
+            purses[NumberOfPlayers()] = StartingPurse;
+            inPenaltyBox[NumberOfPlayers()] = false;
 
             Console.WriteLine(playerName + " was added");
             Console.WriteLine("They are player number " + players.Count);
             return true;
         }
 
-        public int howManyPlayers()
+        public int NumberOfPlayers()
         {
             return players.Count;
         }
 
-        public void roll(int roll)
+        public void Roll(int roll)
         {
             Console.WriteLine(players[currentPlayer] + " is the current player");
             Console.WriteLine("They have rolled a " + roll);
