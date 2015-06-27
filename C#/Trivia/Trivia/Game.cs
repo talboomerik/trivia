@@ -41,7 +41,8 @@ namespace Trivia
         public bool IsPlayable()
         {
             const Int32 minimumNumberOfPlayers = 2;
-            return (GetNumberOfPlayersParticipating() >= minimumNumberOfPlayers);
+            bool thereAreMinimumNumberOfPlayers = GetNumberOfPlayersParticipating() >= minimumNumberOfPlayers;
+            return thereAreMinimumNumberOfPlayers;
         }
 
         public bool AddPlayer(String playerName)
@@ -132,7 +133,6 @@ namespace Trivia
             }
         }
 
-
         private String CurrentCategory()
         {
             if (boardPositions[_currentPlayer] == 0) return "Pop";
@@ -208,10 +208,10 @@ namespace Trivia
             return _currentPlayer == players.Count;
         }
 
-
         private bool DidPlayerWin()
         {
-            return !(victoryPoints[_currentPlayer] == 6);
+            bool currentPlayerWonSixPoints = victoryPoints[_currentPlayer] == 6;
+            return !currentPlayerWonSixPoints;
         }
     }
 
