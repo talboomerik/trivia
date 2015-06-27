@@ -21,6 +21,8 @@ public class Game {
     public static final int FIRST_PLAYER = 0;
     public static final boolean GAME_NOT_OVER = true;
     public static final int BOARD_SIZE = 12;
+    public static final String IS_NOT_GETTING_OUT_OF_THE_PENALTY_BOX_MESSAGE = " is not getting out of the penalty box";
+    public static final String IS_GETTING_OUT_OF_THE_PENALTY_BOX_MESSAGE = " is getting out of the penalty box";
     ArrayList players = new ArrayList();
 
     public int[] places = new int[NUMBER_OF_PLAYERS];
@@ -83,12 +85,9 @@ public class Game {
 
     private void startTurnInPenaltyBox(int roll) {
         isGettingOutOfPenaltyBox = (roll % 2 != 0);
-        if (isGettingOutOfPenaltyBox) {
-            outputPrintStream.println(players.get(currentPlayer) + " is getting out of the penalty box");
-            startNormalTurn(roll);
-        } else {
-            outputPrintStream.println(players.get(currentPlayer) + " is not getting out of the penalty box");
-        }
+        String message = isGettingOutOfPenaltyBox ? IS_GETTING_OUT_OF_THE_PENALTY_BOX_MESSAGE : IS_NOT_GETTING_OUT_OF_THE_PENALTY_BOX_MESSAGE;
+        outputPrintStream.println(players.get(currentPlayer) + message);
+        if (isGettingOutOfPenaltyBox) startNormalTurn(roll);
     }
 
     private void startNormalTurn(int roll) {
