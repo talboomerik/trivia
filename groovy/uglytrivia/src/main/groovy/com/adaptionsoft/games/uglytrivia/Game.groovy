@@ -16,15 +16,15 @@ public class Game {
 
 	public Game() {
 		for (def i = 0; i < 50; i++) {
-			popQuestions.add("Pop Question " + i)
-			scienceQuestions.add(("Science Question " + i))
-			sportsQuestions.add(("Sports Question " + i))
+			popQuestions.add("Pop Question $i")
+			scienceQuestions.add(("Science Question $i"))
+			sportsQuestions.add(("Sports Question $i"))
 			rockQuestions.add(createRockQuestion(i))
 		}
 	}
 
 	public createRockQuestion(index) {
-		return "Rock Question " + index
+		return "Rock Question $index"
 	}
 
 	public isPlayable() {
@@ -39,8 +39,8 @@ public class Game {
 		purses[howManyPlayers()] = 0
 		inPenaltyBox[howManyPlayers()] = false
 
-		println(playerName + " was added")
-		println("They are player number " + players.size())
+		println("$playerName was added")
+		println("They are player number $players.size()")
 		return true
 	}
 
@@ -49,24 +49,24 @@ public class Game {
 	}
 
 	public roll(roll) {
-		println(players.get(currentPlayer) + " is the current player")
-		println("They have rolled a " + roll)
+		println("${players.get(currentPlayer)} is the current player")
+		println("They have rolled a $roll")
 
 		if (inPenaltyBox[currentPlayer]) {
 			if (roll % 2 != 0) {
 				isGettingOutOfPenaltyBox = true
 
-				println(players.get(currentPlayer) + " is getting out of the penalty box")
+				println("${players.get(currentPlayer)} is getting out of the penalty box")
 				places[currentPlayer] = places[currentPlayer] + roll
 				if (places[currentPlayer] > 11) places[currentPlayer] = places[currentPlayer] - 12
 
 				println(players.get(currentPlayer)
 						+ "'s new location is "
 						+ places[currentPlayer])
-				println("The category is " + currentCategory())
+				println("The category is ${currentCategory()}")
 				askQuestion()
 			} else {
-				println(players.get(currentPlayer) + " is not getting out of the penalty box")
+				println("${players.get(currentPlayer)} is not getting out of the penalty box")
 				isGettingOutOfPenaltyBox = false
 			}
 
@@ -75,10 +75,8 @@ public class Game {
 			places[currentPlayer] = places[currentPlayer] + roll
 			if (places[currentPlayer] > 11) places[currentPlayer] = places[currentPlayer] - 12
 
-			println(players.get(currentPlayer)
-					+ "'s new location is "
-					+ places[currentPlayer])
-			println("The category is " + currentCategory())
+			println("${players.get(currentPlayer)}'s new location is ${places[currentPlayer]}")
+			println("The category is ${currentCategory()}")
 			askQuestion()
 		}
 
@@ -114,10 +112,7 @@ public class Game {
 			if (isGettingOutOfPenaltyBox) {
 				println("Answer was correct!!!!")
 				purses[currentPlayer]++
-				println(players.get(currentPlayer)
-						+ " now has "
-						+ purses[currentPlayer]
-						+ " Gold Coins.")
+				println("${players.get(currentPlayer)} now has ${purses[currentPlayer]} Gold Coins.")
 
 				def winner = didPlayerWin()
 				currentPlayer++
@@ -135,10 +130,7 @@ public class Game {
 
 			println("Answer was corrent!!!!")
 			purses[currentPlayer]++
-			println(players.get(currentPlayer)
-					+ " now has "
-					+ purses[currentPlayer]
-					+ " Gold Coins.")
+			println("${players.get(currentPlayer)} now has ${purses[currentPlayer]} Gold Coins.")
 
 			def winner = didPlayerWin()
 			currentPlayer++
@@ -150,7 +142,7 @@ public class Game {
 
 	public wrongAnswer() {
 		println("Question was incorrectly answered")
-		println(players.get(currentPlayer) + " was sent to the penalty box")
+		println("${players.get(currentPlayer)} was sent to the penalty box")
 		inPenaltyBox[currentPlayer] = true
 
 		currentPlayer++
