@@ -127,9 +127,7 @@ public class Game {
 
     public boolean wasCorrectlyAnswered() {
         if (isCurrentPlayerInPenaltyBox() && !isCurrentPlayerGettingOutOfPenaltyBox) {
-            currentPlayer++;
-            if (currentPlayer == players.size())
-                currentPlayer = FIRST_PLAYER;
+            changeToNextPlayer();
             return true;
         }
 
@@ -141,9 +139,7 @@ public class Game {
                 + " Gold Coins.");
 
         boolean winner = didPlayerWin();
-        currentPlayer++;
-        if (currentPlayer == players.size())
-            currentPlayer = FIRST_PLAYER;
+        changeToNextPlayer();
 
         return winner;
     }
@@ -153,11 +149,15 @@ public class Game {
         System.out.println(players.get(currentPlayer) + " was sent to the penalty box");
         inPenaltyBox[currentPlayer] = true;
 
-        currentPlayer++;
-        if (currentPlayer == players.size()) currentPlayer = FIRST_PLAYER;
+        changeToNextPlayer();
         return true;
     }
 
+    private void changeToNextPlayer() {
+        currentPlayer++;
+        if (currentPlayer == players.size())
+            currentPlayer = FIRST_PLAYER;
+    }
 
     private boolean didPlayerWin() {
         return !(purses[currentPlayer] == WINNING_AMOUNT);
