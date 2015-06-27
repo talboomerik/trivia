@@ -68,16 +68,15 @@ public class Game {
         if (isCurrentPlayerInPenaltyBox()) {
             isCurrentPlayerGettingOutOfPenaltyBox = isOdd(roll);
 
-            if (!isCurrentPlayerGettingOutOfPenaltyBox) {
+            if (isCurrentPlayerGettingOutOfPenaltyBox) {
+                System.out.println(players.get(currentPlayer) + " is getting out of the penalty box");
+            } else {
                 System.out.println(players.get(currentPlayer) + " is not getting out of the penalty box");
                 return;
             }
         }
 
         moveCurrentPlayer(roll);
-        if (isCurrentPlayerInPenaltyBox()) {
-            System.out.println(players.get(currentPlayer) + " is getting out of the penalty box");
-        }
 
         System.out.println(players.get(currentPlayer)
                 + "'s new location is "
