@@ -19,12 +19,12 @@ public class GoldenMasterTest {
         List<String> systemOutput = seeds.stream().map(
                 seed ->
                 {
-                    ByteArrayOutputStream baos = new ByteArrayOutputStream();
-                    PrintStream myPrintStream = new PrintStream(baos);
+                    ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+                    PrintStream myPrintStream = new PrintStream(byteArrayOutputStream);
 
                     GameRunner.runGame(seed, myPrintStream);
 
-                    return baos.toString();
+                    return byteArrayOutputStream.toString();
                 }
         ).collect(Collectors.toList());
 
