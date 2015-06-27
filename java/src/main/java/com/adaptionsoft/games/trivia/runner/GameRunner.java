@@ -16,16 +16,14 @@ public class GameRunner {
         runGame(randomSeed, output_print_stream);
 	}
 
-    public static void runGame(long randomSeed, PrintStream output_print_stream) {
-        Game aGame = new Game(output_print_stream);
+    public static void runGame(long randomSeed, PrintStream outputPrintStream) {
+        Game aGame = new Game(outputPrintStream);
 
         aGame.add("Chet");
         aGame.add("Pat");
         aGame.add("Sue");
 
-
         Random rand = new Random(randomSeed);
-
         do {
 
             aGame.roll(rand.nextInt(5) + 1);
@@ -35,9 +33,6 @@ public class GameRunner {
             } else {
                 notAWinner = aGame.wasCorrectlyAnswered();
             }
-
-
-
         } while (notAWinner);
     }
 }

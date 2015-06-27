@@ -36,16 +36,16 @@ public class Game {
 
     boolean isGettingOutOfPenaltyBox;
 
-    private final PrintStream output_print_stream;
+    private final PrintStream outputPrintStream;
 
-    public  Game(PrintStream output_print_stream){
+    public  Game(PrintStream outputPrintStream){
     	for (int i = 0; i < QUESTIONS_COUNT_IN_EACH_CATEGORY; i++) {
 			popQuestions.addLast(POP_QUESTION + i);
 			scienceQuestions.addLast((SCIENCE_QUESTION + i));
 			sportsQuestions.addLast((SPORTS_QUESTION + i));
 			rockQuestions.addLast(createRockQuestion(i));
     	}
-        this.output_print_stream = output_print_stream;
+        this.outputPrintStream = outputPrintStream;
     }
 
 	public String createRockQuestion(int index){
@@ -62,8 +62,8 @@ public class Game {
 	    purses[howManyPlayers()] = 0;
 	    inPenaltyBox[howManyPlayers()] = false;
 	    
-	    output_print_stream.println(playerName + " was added");
-	    output_print_stream.println("They are player number " + players.size());
+	    outputPrintStream.println(playerName + " was added");
+	    outputPrintStream.println("They are player number " + players.size());
 		return true;
 	}
 	
@@ -72,24 +72,24 @@ public class Game {
 	}
 
 	public void roll(int roll) {
-		output_print_stream.println(players.get(currentPlayer) + " is the current player");
-		output_print_stream.println("They have rolled a " + roll);
+		outputPrintStream.println(players.get(currentPlayer) + " is the current player");
+		outputPrintStream.println("They have rolled a " + roll);
 		
 		if (inPenaltyBox[currentPlayer]) {
 			if (roll % 2 != 0) {
 				isGettingOutOfPenaltyBox = true;
 				
-				output_print_stream.println(players.get(currentPlayer) + " is getting out of the penalty box");
+				outputPrintStream.println(players.get(currentPlayer) + " is getting out of the penalty box");
 				places[currentPlayer] = places[currentPlayer] + roll;
 				if (places[currentPlayer] > NUMBER_OF_PLACES_MINUS_ONE) places[currentPlayer] = places[currentPlayer] - NUMBER_OF_PLACES;
 
-                output_print_stream.println(players.get(currentPlayer)
+                outputPrintStream.println(players.get(currentPlayer)
                         + "'s new location is "
                         + places[currentPlayer]);
-				output_print_stream.println("The category is " + currentCategory());
+				outputPrintStream.println("The category is " + currentCategory());
 				askQuestion();
 			} else {
-				output_print_stream.println(players.get(currentPlayer) + " is not getting out of the penalty box");
+				outputPrintStream.println(players.get(currentPlayer) + " is not getting out of the penalty box");
 				isGettingOutOfPenaltyBox = false;
 				}
 			
@@ -98,10 +98,10 @@ public class Game {
 			places[currentPlayer] = places[currentPlayer] + roll;
 			if (places[currentPlayer] > NUMBER_OF_PLACES_MINUS_ONE) places[currentPlayer] = places[currentPlayer] - NUMBER_OF_PLACES;
 			
-			output_print_stream.println(players.get(currentPlayer)
+			outputPrintStream.println(players.get(currentPlayer)
                     + "'s new location is "
                     + places[currentPlayer]);
-			output_print_stream.println("The category is " + currentCategory());
+			outputPrintStream.println("The category is " + currentCategory());
 			askQuestion();
 		}
 		
@@ -109,13 +109,13 @@ public class Game {
 
 	private void askQuestion() {
 		if (currentCategory() == POP)
-			output_print_stream.println(popQuestions.removeFirst());
+			outputPrintStream.println(popQuestions.removeFirst());
 		if (currentCategory() == SCIENCE)
-			output_print_stream.println(scienceQuestions.removeFirst());
+			outputPrintStream.println(scienceQuestions.removeFirst());
 		if (currentCategory() == SPORTS)
-			output_print_stream.println(sportsQuestions.removeFirst());
+			outputPrintStream.println(sportsQuestions.removeFirst());
 		if (currentCategory() == ROCK)
-			output_print_stream.println(rockQuestions.removeFirst());
+			outputPrintStream.println(rockQuestions.removeFirst());
 	}
 	
 	
@@ -135,9 +135,9 @@ public class Game {
 	public boolean wasCorrectlyAnswered() {
 		if (inPenaltyBox[currentPlayer]){
 			if (isGettingOutOfPenaltyBox) {
-				output_print_stream.println("Answer was correct!!!!");
+				outputPrintStream.println("Answer was correct!!!!");
 				purses[currentPlayer]++;
-				output_print_stream.println(players.get(currentPlayer)
+				outputPrintStream.println(players.get(currentPlayer)
                         + " now has "
                         + purses[currentPlayer]
                         + " Gold Coins.");
@@ -157,9 +157,9 @@ public class Game {
 			
 		} else {
 		
-			output_print_stream.println("Answer was corrent!!!!");
+			outputPrintStream.println("Answer was corrent!!!!");
 			purses[currentPlayer]++;
-			output_print_stream.println(players.get(currentPlayer)
+			outputPrintStream.println(players.get(currentPlayer)
                     + " now has "
                     + purses[currentPlayer]
                     + " Gold Coins.");
@@ -173,8 +173,8 @@ public class Game {
 	}
 	
 	public boolean wrongAnswer(){
-		output_print_stream.println("Question was incorrectly answered");
-		output_print_stream.println(players.get(currentPlayer) + " was sent to the penalty box");
+		outputPrintStream.println("Question was incorrectly answered");
+		outputPrintStream.println(players.get(currentPlayer) + " was sent to the penalty box");
 		inPenaltyBox[currentPlayer] = true;
 		
 		currentPlayer++;

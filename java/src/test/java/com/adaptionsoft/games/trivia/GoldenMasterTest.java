@@ -14,15 +14,7 @@ public class GoldenMasterTest {
 
     @Test
     public void randomInputsCheck() throws Exception {
-        ArrayList<Long> seeds  = new ArrayList<>();
-        seeds.add(12341234L);
-        seeds.add(1234256336L);
-        seeds.add(4667687L);
-        seeds.add(435345L);
-        seeds.add(7657757L);
-        seeds.add(9800890890L);
-        seeds.add(3453253L);
-        seeds.add(576757L);
+        List<Long> seeds = arrayToList(new long[]{12341234L, 12341234L, 1234256336L, 4667687L, 435345L, 7657757L, 9800890890L, 3453253L, 576757L});
 
         List<String> systemOutput = seeds.stream().map(
                 seed ->
@@ -37,5 +29,13 @@ public class GoldenMasterTest {
         ).collect(Collectors.toList());
 
         Approvals.verifyAll("", systemOutput);
+    }
+
+    private List<Long> arrayToList(long[] array) {
+        List<Long> seeds  = new ArrayList<>();
+        for(long value : array) {
+            seeds.add(value);
+        }
+        return seeds;
     }
 }
