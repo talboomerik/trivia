@@ -2,9 +2,9 @@ package com.adaptionsoft.games.uglytrivia
 
 public class Game {
 	def players = []
-	def places = [0] * 6
-	def purses = [0] * 6
-	def inPenaltyBox = [false] * 6
+	def places = []
+	def purses = []
+	def inPenaltyBox = []
 
 	def popQuestions = []
 	def scienceQuestions = []
@@ -35,9 +35,9 @@ public class Game {
 
 
 		players.add(playerName)
-		places[howManyPlayers()] = 0
-		purses[howManyPlayers()] = 0
-		inPenaltyBox[howManyPlayers()] = false
+		places.add(0)
+		purses.add(0)
+		inPenaltyBox.add(false)
 
 		println("$playerName was added")
 		println("They are player number $players.size()")
