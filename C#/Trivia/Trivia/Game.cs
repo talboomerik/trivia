@@ -7,8 +7,8 @@ namespace UglyTrivia
     public class Game
     {
         private const int MinimumNumberOfPlayers = 2;
-        private const int StartPosition = 0;
-        private const int InitialAmountOfCoinsInPurse = 0;
+        private const int PlayerStartPosition = 0;
+        private const int PlayerStartAmountOfCoins = 0;
         private const bool PlayerStartsInPenaltyBox = false;
         List<string> players = new List<string>();
 
@@ -50,8 +50,8 @@ namespace UglyTrivia
         {
             players.Add(playerName);
             var addedPlayerIndex = howManyPlayers();
-            playerLocations[addedPlayerIndex] = StartPosition;
-            purses[addedPlayerIndex] = InitialAmountOfCoinsInPurse;
+            playerLocations[addedPlayerIndex] = PlayerStartPosition;
+            purses[addedPlayerIndex] = PlayerStartAmountOfCoins;
             inPenaltyBox[addedPlayerIndex] = PlayerStartsInPenaltyBox;
 
             Console.WriteLine(playerName + " was added");
