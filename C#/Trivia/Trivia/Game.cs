@@ -37,7 +37,7 @@ namespace UglyTrivia
             return "Rock Question " + index;
         }
 
-        public bool isPlayable()
+        public bool HasEnoughPlayers()
         {
             return (howManyPlayers() >= 2);
         }
