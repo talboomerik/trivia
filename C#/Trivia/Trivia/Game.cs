@@ -77,7 +77,9 @@ namespace UglyTrivia
 
                     Console.WriteLine(players[currentPlayerIndex] + " is getting out of the penalty box");
                     playerLocations[currentPlayerIndex] = playerLocations[currentPlayerIndex] + rolledNumber;
-                    if (playerLocations[currentPlayerIndex] > 11) playerLocations[currentPlayerIndex] = playerLocations[currentPlayerIndex] - 12;
+
+                    if (playerLocations[currentPlayerIndex] > 11)
+                        playerLocations[currentPlayerIndex] = playerLocations[currentPlayerIndex] - 12;
 
                     Console.WriteLine(players[currentPlayerIndex]
                             + "'s new location is "
