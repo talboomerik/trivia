@@ -12,6 +12,7 @@ namespace UglyTrivia
         private const bool PlayerStartsInPenaltyBox = false;
         private const int NumberOfLocationsOnTheBoard = 12;
         private const int NumberOfCoinsNeededToWin = 6;
+        private const int FirstPlayerIndex = 0;
         List<string> players = new List<string>();
 
         int[] playerLocations = new int[6];
@@ -24,7 +25,7 @@ namespace UglyTrivia
         LinkedList<string> sportsQuestions = new LinkedList<string>();
         LinkedList<string> rockQuestions = new LinkedList<string>();
 
-        int currentPlayerIndex = 0;
+        int currentPlayerIndex = FirstPlayerIndex;
         bool isGettingOutOfPenaltyBox;
 
         public Game()
@@ -161,14 +162,14 @@ namespace UglyTrivia
 
                     bool isPlayerStillNotVictorious = IsPlayerStillNotVictorious();
                     currentPlayerIndex++;
-                    if (currentPlayerIndex == players.Count) currentPlayerIndex = 0;
+                    if (currentPlayerIndex == players.Count) currentPlayerIndex = FirstPlayerIndex;
 
                     return isPlayerStillNotVictorious;
                 }
                 else
                 {
                     currentPlayerIndex++;
-                    if (currentPlayerIndex == players.Count) currentPlayerIndex = 0;
+                    if (currentPlayerIndex == players.Count) currentPlayerIndex = FirstPlayerIndex;
                     return true;
                 }
             }
@@ -183,7 +184,7 @@ namespace UglyTrivia
 
                 bool winner = IsPlayerStillNotVictorious();
                 currentPlayerIndex++;
-                if (currentPlayerIndex == players.Count) currentPlayerIndex = 0;
+                if (currentPlayerIndex == players.Count) currentPlayerIndex = FirstPlayerIndex;
 
                 return winner;
             }
@@ -198,7 +199,7 @@ namespace UglyTrivia
             currentPlayerIndex++;
 
             if (currentPlayerIndex == players.Count)
-                currentPlayerIndex = 0;
+                currentPlayerIndex = FirstPlayerIndex;
 
             return true;
         }
