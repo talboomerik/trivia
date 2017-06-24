@@ -16,7 +16,7 @@ namespace UglyTrivia
         int[] playerLocations = new int[6];
         int[] purses = new int[6];
 
-        bool[] inPenaltyBox = new bool[6];
+        bool[] playerIsInPenaltyBox = new bool[6];
 
         LinkedList<string> popQuestions = new LinkedList<string>();
         LinkedList<string> scienceQuestions = new LinkedList<string>();
@@ -53,7 +53,7 @@ namespace UglyTrivia
             var addedPlayerIndex = NumberOfPlayers();
             playerLocations[addedPlayerIndex] = PlayerStartPosition;
             purses[addedPlayerIndex] = PlayerStartAmountOfCoins;
-            inPenaltyBox[addedPlayerIndex] = PlayerStartsInPenaltyBox;
+            playerIsInPenaltyBox[addedPlayerIndex] = PlayerStartsInPenaltyBox;
 
             Console.WriteLine(playerName + " was added");
             Console.WriteLine("They are player number " + players.Count);
@@ -70,7 +70,7 @@ namespace UglyTrivia
             Console.WriteLine(players[currentPlayerIndex] + " is the current player");
             Console.WriteLine("They have rolled a " + rolledNumber);
 
-            if (inPenaltyBox[currentPlayerIndex])
+            if (playerIsInPenaltyBox[currentPlayerIndex])
             {
                 if (rolledNumber % 2 != 0)
                 {
@@ -147,7 +147,7 @@ namespace UglyTrivia
 
         public bool wasCorrectlyAnswered()
         {
-            if (inPenaltyBox[currentPlayerIndex])
+            if (playerIsInPenaltyBox[currentPlayerIndex])
             {
                 if (isGettingOutOfPenaltyBox)
                 {
@@ -192,7 +192,7 @@ namespace UglyTrivia
         {
             Console.WriteLine("Question was incorrectly answered");
             Console.WriteLine(players[currentPlayerIndex] + " was sent to the penalty box");
-            inPenaltyBox[currentPlayerIndex] = true;
+            playerIsInPenaltyBox[currentPlayerIndex] = true;
 
             currentPlayerIndex++;
             if (currentPlayerIndex == players.Count) currentPlayerIndex = 0;
