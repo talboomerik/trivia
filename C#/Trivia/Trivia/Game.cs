@@ -28,6 +28,7 @@ namespace UglyTrivia
         int currentPlayerIndex;
         bool isGettingOutOfPenaltyBox;
         private string PopQuestionCategory = "Pop";
+        private string ScienceQuestionCategory = "Science";
 
         public Game()
         {
@@ -119,7 +120,7 @@ namespace UglyTrivia
                 Console.WriteLine(popQuestions.First());
                 popQuestions.RemoveFirst();
             }
-            if (currentCategory() == "Science")
+            if (currentCategory() == ScienceQuestionCategory)
             {
                 Console.WriteLine(scienceQuestions.First());
                 scienceQuestions.RemoveFirst();
@@ -141,9 +142,9 @@ namespace UglyTrivia
             if (playerLocations[currentPlayerIndex] == 0) return PopQuestionCategory;
             if (playerLocations[currentPlayerIndex] == 4) return PopQuestionCategory;
             if (playerLocations[currentPlayerIndex] == 8) return PopQuestionCategory;
-            if (playerLocations[currentPlayerIndex] == 1) return "Science";
-            if (playerLocations[currentPlayerIndex] == 5) return "Science";
-            if (playerLocations[currentPlayerIndex] == 9) return "Science";
+            if (playerLocations[currentPlayerIndex] == 1) return ScienceQuestionCategory;
+            if (playerLocations[currentPlayerIndex] == 5) return ScienceQuestionCategory;
+            if (playerLocations[currentPlayerIndex] == 9) return ScienceQuestionCategory;
             if (playerLocations[currentPlayerIndex] == 2) return "Sports";
             if (playerLocations[currentPlayerIndex] == 6) return "Sports";
             if (playerLocations[currentPlayerIndex] == 10) return "Sports";
