@@ -202,7 +202,7 @@ namespace UglyTrivia
 
         private bool didPlayerWin()
         {
-            return !(purses[currentPlayerIndex] == NumberOfCoinsNeededToWin);
+            return purses[currentPlayerIndex] != NumberOfCoinsNeededToWin;
         }
     }
 }
