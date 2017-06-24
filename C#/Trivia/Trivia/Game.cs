@@ -196,7 +196,10 @@ namespace UglyTrivia
             playerIsInPenaltyBox[currentPlayerIndex] = true;
 
             currentPlayerIndex++;
-            if (currentPlayerIndex == players.Count) currentPlayerIndex = 0;
+
+            if (currentPlayerIndex == players.Count)
+                currentPlayerIndex = 0;
+
             return true;
         }
 
