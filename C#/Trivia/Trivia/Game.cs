@@ -10,6 +10,7 @@ namespace UglyTrivia
         private const int PlayerStartPosition = 0;
         private const int PlayerStartAmountOfCoins = 0;
         private const bool PlayerStartsInPenaltyBox = false;
+        private const int NumberOfLocationsOnTheBoard = 12;
         List<string> players = new List<string>();
 
         int[] playerLocations = new int[6];
@@ -79,7 +80,7 @@ namespace UglyTrivia
                     playerLocations[currentPlayerIndex] = playerLocations[currentPlayerIndex] + rolledNumber;
 
                     if (playerLocations[currentPlayerIndex] > 11)
-                        playerLocations[currentPlayerIndex] = playerLocations[currentPlayerIndex] - 12;
+                        playerLocations[currentPlayerIndex] = playerLocations[currentPlayerIndex] - NumberOfLocationsOnTheBoard;
 
                     Console.WriteLine(players[currentPlayerIndex]
                             + "'s new location is "
@@ -96,7 +97,7 @@ namespace UglyTrivia
             else
             {
                 playerLocations[currentPlayerIndex] = playerLocations[currentPlayerIndex] + rolledNumber;
-                if (playerLocations[currentPlayerIndex] > 11) playerLocations[currentPlayerIndex] = playerLocations[currentPlayerIndex] - 12;
+                if (playerLocations[currentPlayerIndex] > 11) playerLocations[currentPlayerIndex] = playerLocations[currentPlayerIndex] - NumberOfLocationsOnTheBoard;
 
                 Console.WriteLine(players[currentPlayerIndex]
                         + "'s new location is "
