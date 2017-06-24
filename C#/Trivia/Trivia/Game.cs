@@ -159,11 +159,11 @@ namespace UglyTrivia
                             + purses[currentPlayerIndex]
                             + " Gold Coins.");
 
-                    bool winner = IsPlayerStillNotVictorious();
+                    bool isPlayerStillNotVictorious = IsPlayerStillNotVictorious();
                     currentPlayerIndex++;
                     if (currentPlayerIndex == players.Count) currentPlayerIndex = 0;
 
-                    return winner;
+                    return isPlayerStillNotVictorious;
                 }
                 else
                 {
