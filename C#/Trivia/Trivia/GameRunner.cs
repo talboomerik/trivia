@@ -5,7 +5,7 @@ namespace Trivia
 {
     public class GameRunner
     {
-        private static bool notAWinner;
+        private static bool noPlayerIsVictorious;
 
         public static void Main(String[] args)
         {
@@ -23,13 +23,13 @@ namespace Trivia
 
                 if (rolledNumber.Next(9) == 7)
                 {
-                    notAWinner = aGame.wrongAnswer();
+                    noPlayerIsVictorious = aGame.wrongAnswer();
                 }
                 else
                 {
-                    notAWinner = aGame.wasCorrectlyAnswered();
+                    noPlayerIsVictorious = aGame.wasCorrectlyAnswered();
                 }
-            } while (notAWinner);
+            } while (noPlayerIsVictorious);
             Console.ReadLine();
         }
     }
