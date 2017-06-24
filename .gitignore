@@ -2,6 +2,7 @@ scala/.idea/
 scala/scala.iml
 scala/out/
 *.class
+packages
 
 #Visual Studio exclusions
 *.suo
