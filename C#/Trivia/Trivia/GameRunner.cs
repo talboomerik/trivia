@@ -35,7 +35,7 @@ namespace Trivia
 
 
             } while (notAWinner);
-
+            Console.ReadLine();
         }
 
 
