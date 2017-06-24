@@ -15,13 +15,13 @@ namespace Trivia
             aGame.add("Pat");
             aGame.add("Sue");
             
-            var rolledNumber = (args.Length == 0 ? new Random() : new Random(args[0].GetHashCode()));
+            var randomizer = (args.Length == 0 ? new Random() : new Random(args[0].GetHashCode()));
 
             do
             {
-                aGame.MovePlayerAndAskQuestion(rolledNumber.Next(5) + 1);
+                aGame.MovePlayerAndAskQuestion(randomizer.Next(5) + 1);
 
-                if (rolledNumber.Next(9) == 7)
+                if (randomizer.Next(9) == 7)
                 {
                     noPlayerIsVictorious = aGame.wrongAnswer();
                 }
