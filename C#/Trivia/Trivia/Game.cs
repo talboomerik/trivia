@@ -14,6 +14,7 @@ namespace UglyTrivia
         private const int NumberOfCoinsNeededToWin = 6;
         private const int FirstPlayerIndex = 0;
         private const string MessageAnswerIsCorrect = "Answer was correct!!!!";
+        private const string MessageAnswerIsIncorrect = "Question was incorrectly answered";
         List<string> players = new List<string>();
 
         int[] playerLocations = new int[6];
@@ -199,7 +200,7 @@ namespace UglyTrivia
 
         public bool PlayerAnsweredIncorrectly()
         {
-            Console.WriteLine("Question was incorrectly answered");
+            Console.WriteLine(MessageAnswerIsIncorrect);
             Console.WriteLine(players[currentPlayerIndex] + " was sent to the penalty box");
             playerIsInPenaltyBox[currentPlayerIndex] = true;
 
