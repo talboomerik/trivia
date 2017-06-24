@@ -11,9 +11,9 @@ namespace Trivia
         {
             var aGame = new Game();
 
-            aGame.add("Chet");
-            aGame.add("Pat");
-            aGame.add("Sue");
+            aGame.Add("Chet");
+            aGame.Add("Pat");
+            aGame.Add("Sue");
             
             var randomizer = (args.Length == 0 ? new Random() : new Random(args[0].GetHashCode()));
 
