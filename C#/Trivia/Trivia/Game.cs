@@ -6,8 +6,6 @@ namespace UglyTrivia
 {
     public class Game
     {
-
-
         List<string> players = new List<string>();
 
         int[] places = new int[6];
@@ -46,8 +44,6 @@ namespace UglyTrivia
 
         public bool add(String playerName)
         {
-
-
             players.Add(playerName);
             places[howManyPlayers()] = 0;
             purses[howManyPlayers()] = 0;
@@ -89,11 +85,9 @@ namespace UglyTrivia
                     Console.WriteLine(players[currentPlayer] + " is not getting out of the penalty box");
                     isGettingOutOfPenaltyBox = false;
                 }
-
             }
             else
             {
-
                 places[currentPlayer] = places[currentPlayer] + roll;
                 if (places[currentPlayer] > 11) places[currentPlayer] = places[currentPlayer] - 12;
 
@@ -103,7 +97,6 @@ namespace UglyTrivia
                 Console.WriteLine("The category is " + currentCategory());
                 askQuestion();
             }
-
         }
 
         private void askQuestion()
@@ -129,7 +122,6 @@ namespace UglyTrivia
                 rockQuestions.RemoveFirst();
             }
         }
-
 
         private String currentCategory()
         {
@@ -170,13 +162,9 @@ namespace UglyTrivia
                     if (currentPlayer == players.Count) currentPlayer = 0;
                     return true;
                 }
-
-
-
             }
             else
             {
-
                 Console.WriteLine("Answer was corrent!!!!");
                 purses[currentPlayer]++;
                 Console.WriteLine(players[currentPlayer]
@@ -203,11 +191,9 @@ namespace UglyTrivia
             return true;
         }
 
-
         private bool didPlayerWin()
         {
             return !(purses[currentPlayer] == 6);
         }
     }
-
 }
