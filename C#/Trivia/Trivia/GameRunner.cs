@@ -19,9 +19,11 @@ namespace Trivia
 
             do
             {
-                aGame.MovePlayerAndAskQuestion(randomizer.Next(5) + 1);
+                var rolledNumber = randomizer.Next(5) + 1;
+                aGame.MovePlayerAndAskQuestion(rolledNumber);
 
-                if (randomizer.Next(9) == 7)
+                var playerAnswerNumber = randomizer.Next(9);
+                if (playerAnswerNumber == 7)
                 {
                     noPlayerIsVictorious = aGame.wrongAnswer();
                 }
