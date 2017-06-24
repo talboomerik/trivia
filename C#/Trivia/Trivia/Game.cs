@@ -11,6 +11,7 @@ namespace UglyTrivia
         private const int PlayerStartAmountOfCoins = 0;
         private const bool PlayerStartsInPenaltyBox = false;
         private const int NumberOfLocationsOnTheBoard = 12;
+        private const int NumberOfCoinsNeededToWin = 6;
         List<string> players = new List<string>();
 
         int[] playerLocations = new int[6];
@@ -201,7 +202,7 @@ namespace UglyTrivia
 
         private bool didPlayerWin()
         {
-            return !(purses[currentPlayerIndex] == 6);
+            return !(purses[currentPlayerIndex] == NumberOfCoinsNeededToWin);
         }
     }
 }
