@@ -43,13 +43,13 @@ namespace UglyTrivia
 
         public bool HasEnoughPlayers()
         {
-            return (howManyPlayers() >= MinimumNumberOfPlayers);
+            return (NumberOfPlayers() >= MinimumNumberOfPlayers);
         }
 
         public bool add(String playerName)
         {
             players.Add(playerName);
-            var addedPlayerIndex = howManyPlayers();
+            var addedPlayerIndex = NumberOfPlayers();
             playerLocations[addedPlayerIndex] = PlayerStartPosition;
             purses[addedPlayerIndex] = PlayerStartAmountOfCoins;
             inPenaltyBox[addedPlayerIndex] = PlayerStartsInPenaltyBox;
@@ -59,7 +59,7 @@ namespace UglyTrivia
             return true;
         }
 
-        public int howManyPlayers()
+        public int NumberOfPlayers()
         {
             return players.Count;
         }
