@@ -25,11 +25,13 @@ namespace UglyTrivia
         LinkedList<string> sportsQuestions = new LinkedList<string>();
         LinkedList<string> rockQuestions = new LinkedList<string>();
 
-        int currentPlayerIndex = FirstPlayerIndex;
+        int currentPlayerIndex;
         bool isGettingOutOfPenaltyBox;
 
         public Game()
         {
+            currentPlayerIndex = FirstPlayerIndex;
+
             for (int i = 0; i < 50; i++)
             {
                 popQuestions.AddLast("Pop Question " + i);
