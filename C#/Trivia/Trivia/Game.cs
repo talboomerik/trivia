@@ -45,9 +45,10 @@ namespace UglyTrivia
         public bool add(String playerName)
         {
             players.Add(playerName);
-            playerLocations[howManyPlayers()] = 0;
-            purses[howManyPlayers()] = 0;
-            inPenaltyBox[howManyPlayers()] = false;
+            var addedPlayerIndex = howManyPlayers();
+            playerLocations[addedPlayerIndex] = 0;
+            purses[addedPlayerIndex] = 0;
+            inPenaltyBox[addedPlayerIndex] = false;
 
             Console.WriteLine(playerName + " was added");
             Console.WriteLine("They are player number " + players.Count);
