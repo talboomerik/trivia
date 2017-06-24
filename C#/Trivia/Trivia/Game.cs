@@ -6,6 +6,7 @@ namespace UglyTrivia
 {
     public class Game
     {
+        private const int MinimumNumberOfPlayers = 2;
         List<string> players = new List<string>();
 
         int[] playerLocations = new int[6];
@@ -39,7 +40,7 @@ namespace UglyTrivia
 
         public bool HasEnoughPlayers()
         {
-            return (howManyPlayers() >= 2);
+            return (howManyPlayers() >= MinimumNumberOfPlayers);
         }
 
         public bool add(String playerName)
