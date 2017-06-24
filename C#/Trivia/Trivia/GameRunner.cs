@@ -25,7 +25,7 @@ namespace Trivia
                 var playerAnswerNumber = randomizer.Next(9);
                 if (playerAnswerNumber == 7)
                 {
-                    noPlayerIsVictorious = aGame.wrongAnswer();
+                    noPlayerIsVictorious = aGame.PlayerAnsweredIncorrectly();
                 }
                 else
                 {

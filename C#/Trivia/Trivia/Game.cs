@@ -189,7 +189,7 @@ namespace UglyTrivia
             }
         }
 
-        public bool wrongAnswer()
+        public bool PlayerAnsweredIncorrectly()
         {
             Console.WriteLine("Question was incorrectly answered");
             Console.WriteLine(players[currentPlayerIndex] + " was sent to the penalty box");
