@@ -13,6 +13,7 @@ namespace UglyTrivia
         private const int NumberOfLocationsOnTheBoard = 12;
         private const int NumberOfCoinsNeededToWin = 6;
         private const int FirstPlayerIndex = 0;
+        private const string MessageAnswerIsCorrect = "Answer was correct!!!!";
         List<string> players = new List<string>();
 
         int[] playerLocations = new int[6];
@@ -159,7 +160,7 @@ namespace UglyTrivia
             {
                 if (isGettingOutOfPenaltyBox)
                 {
-                    Console.WriteLine("Answer was correct!!!!");
+                    Console.WriteLine(MessageAnswerIsCorrect);
                     purses[currentPlayerIndex]++;
                     Console.WriteLine(players[currentPlayerIndex]
                             + " now has "
@@ -181,7 +182,7 @@ namespace UglyTrivia
             }
             else
             {
-                Console.WriteLine("Answer was corrent!!!!");
+                Console.WriteLine(MessageAnswerIsCorrect);
                 purses[currentPlayerIndex]++;
                 Console.WriteLine(players[currentPlayerIndex]
                         + " now has "
