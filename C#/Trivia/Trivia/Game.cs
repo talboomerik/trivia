@@ -30,6 +30,7 @@ namespace UglyTrivia
         private string PopQuestionCategory = "Pop";
         private string ScienceQuestionCategory = "Science";
         private string SportsQuestionCategory = "Sports";
+        private string RockQuestionCategory = "Rock";
 
         public Game()
         {
@@ -131,7 +132,7 @@ namespace UglyTrivia
                 Console.WriteLine(sportsQuestions.First());
                 sportsQuestions.RemoveFirst();
             }
-            if (currentCategory() == "Rock")
+            if (currentCategory() == RockQuestionCategory)
             {
                 Console.WriteLine(rockQuestions.First());
                 rockQuestions.RemoveFirst();
@@ -149,7 +150,7 @@ namespace UglyTrivia
             if (playerLocations[currentPlayerIndex] == 2) return SportsQuestionCategory;
             if (playerLocations[currentPlayerIndex] == 6) return SportsQuestionCategory;
             if (playerLocations[currentPlayerIndex] == 10) return SportsQuestionCategory;
-            return "Rock";
+            return RockQuestionCategory;
         }
 
         public bool PlayerAnsweredCorrectly()
