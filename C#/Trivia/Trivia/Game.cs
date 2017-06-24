@@ -59,19 +59,19 @@ namespace UglyTrivia
             return players.Count;
         }
 
-        public void roll(int roll)
+        public void MovePlayerAndAskQuestion(int rolledNumber)
         {
             Console.WriteLine(players[currentPlayer] + " is the current player");
-            Console.WriteLine("They have rolled a " + roll);
+            Console.WriteLine("They have rolled a " + rolledNumber);
 
             if (inPenaltyBox[currentPlayer])
             {
-                if (roll % 2 != 0)
+                if (rolledNumber % 2 != 0)
                 {
                     isGettingOutOfPenaltyBox = true;
 
                     Console.WriteLine(players[currentPlayer] + " is getting out of the penalty box");
-                    places[currentPlayer] = places[currentPlayer] + roll;
+                    places[currentPlayer] = places[currentPlayer] + rolledNumber;
                     if (places[currentPlayer] > 11) places[currentPlayer] = places[currentPlayer] - 12;
 
                     Console.WriteLine(players[currentPlayer]
@@ -88,7 +88,7 @@ namespace UglyTrivia
             }
             else
             {
-                places[currentPlayer] = places[currentPlayer] + roll;
+                places[currentPlayer] = places[currentPlayer] + rolledNumber;
                 if (places[currentPlayer] > 11) places[currentPlayer] = places[currentPlayer] - 12;
 
                 Console.WriteLine(players[currentPlayer]
