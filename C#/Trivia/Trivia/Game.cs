@@ -146,7 +146,7 @@ namespace UglyTrivia
             return "Rock";
         }
 
-        public bool wasCorrectlyAnswered()
+        public bool PlayerAnsweredCorrectly()
         {
             if (playerIsInPenaltyBox[currentPlayerIndex])
             {

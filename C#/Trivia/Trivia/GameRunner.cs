@@ -29,7 +29,7 @@ namespace Trivia
                 }
                 else
                 {
-                    noPlayerIsVictorious = aGame.wasCorrectlyAnswered();
+                    noPlayerIsVictorious = aGame.PlayerAnsweredCorrectly();
                 }
             } while (noPlayerIsVictorious);
             Console.ReadLine();
