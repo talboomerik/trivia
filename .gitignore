@@ -1,4 +1,15 @@
+
 # Please put language-specific ignore patterns
 # in a .gitignore file inside the root folder
 # of that language. See Scala/.gitignore for
 # an example. Thanks.
+
+scala/.idea/
+scala/scala.iml
+scala/out/
+*.class
+
+#Visual Studio exclusions
+*.suo
+*.csproj.user
+
