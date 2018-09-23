@@ -4,7 +4,7 @@ namespace Trivia.Tests
     using System.Text;
     using Xunit;
 
-    public class UnitTest1
+    public class GoldenMaster
     {
         [Fact]
         public void Test1()
