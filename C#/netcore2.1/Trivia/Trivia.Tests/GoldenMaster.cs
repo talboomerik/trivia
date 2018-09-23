@@ -7,7 +7,7 @@ namespace Trivia.Tests
     public class GoldenMaster
     {
         [Fact]
-        public void Test1()
+        public void GoldenMasterIsGolden()
         {
             var goldenMaster = File.ReadAllText("golden_master.txt");
 
