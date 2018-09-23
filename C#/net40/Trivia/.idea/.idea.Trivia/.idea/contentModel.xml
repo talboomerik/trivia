@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="/5cfaa352" t="IncludeRecursive" />
+    <e p="/app" t="IncludeRecursive" />
+    <e p="$PROJECT_DIR$" t="IncludeFlat">
+      <e p="packages" t="ExcludeRecursive" />
+      <e p="trivia" t="IncludeRecursive">
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="Game.cs" t="Include" />
+        <e p="GameRunner.cs" t="Include" />
+        <e p="obj" t="ExcludeRecursive" />
+        <e p="packages.config" t="Include" />
+        <e p="Properties" t="Include">
+          <e p="AssemblyInfo.cs" t="Include" />
+        </e>
+        <e p="Trivia.csproj" t="IncludeRecursive" />
+      </e>
+      <e p="Trivia.sln" t="IncludeFlat" />
+    </e>
+    <e p="$USER_HOME$/Library/Caches/Rider2018.2/extResources" t="IncludeRecursive" />
+    <e p="$USER_HOME$/Library/Caches/Rider2018.2/resharper-host/local/Transient/ReSharperHost/v182/SolutionCaches/_Trivia.283631924.00" t="ExcludeRecursive" />
+  </component>
+</project>

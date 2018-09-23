@@ -20,7 +20,7 @@ namespace Trivia
             aGame.add("Pat");
             aGame.add("Sue");
             
-            Random rand = (args.Length == 0 ? new Random() : new Random(args[0].GetHashCode()));
+            Random rand = (args.Length == 0 ? new Random() : new Random(int.Parse(args[0])));
 
             do
             {
