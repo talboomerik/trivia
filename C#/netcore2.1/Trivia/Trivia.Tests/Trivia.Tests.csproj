@@ -13,4 +13,12 @@
     <DotNetCliToolReference Include="dotnet-xunit" Version="2.3.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Trivia\Trivia.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="golden_master.txt" CopyToOutputDirectory="Always" />
+  </ItemGroup>
+
 </Project>
