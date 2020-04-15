@@ -10,9 +10,4 @@ public class SomeTest {
 	public void true_is_true() throws Exception {
 		assertTrue(true);
 	}
-
-	@Test
-	public void false_is_false() throws Exception {
-		assertFalse(false);
-	}
 }
