@@ -158,13 +158,9 @@ bool Game::wasCorrectlyAnswered()
 			if (currentPlayer == players.size()) currentPlayer = 0;
 			return true;
 		}
-
-
-
 	}
 	else
 	{
-
 		cout << "Answer was corrent!!!!" << endl;
 		purses[currentPlayer]++;
 		cout << players[currentPlayer]
