@@ -17,7 +17,7 @@ SCENARIO( "question is correctly answered", "[vector]" ) {
     REQUIRE(game.getCurrentPlayerName() == "dummy");
 
     WHEN( "verifying" ) {
-    	auto win = game.wasCorrectlyAnswered();
+    	auto win = game.wasCorrectlyAnsweredAndGoToNextPlayerAndReturnIfWeHaveAWinner();
       THEN( "go to next player" ) {
     	  REQUIRE(game.getCurrentPlayerName() == "smartie");
       }

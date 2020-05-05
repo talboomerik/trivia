@@ -32,7 +32,7 @@ int main(int argc, char* argv[])
 		}
 		else
 		{
-			notAWinner = aGame.wasCorrectlyAnswered();
+			notAWinner = aGame.wasCorrectlyAnsweredAndGoToNextPlayerAndReturnIfWeHaveAWinner();
 		}
 	} while (notAWinner);
 

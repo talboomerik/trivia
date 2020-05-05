@@ -133,7 +133,7 @@ string Game::currentCategory()
 	return "Rock";
 }
 
-bool Game::wasCorrectlyAnswered()
+bool Game::wasCorrectlyAnsweredAndGoToNextPlayerAndReturnIfWeHaveAWinner()
 {
 	if (inPenaltyBox[currentPlayer])
 	{

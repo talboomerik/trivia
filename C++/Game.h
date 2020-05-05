@@ -43,7 +43,7 @@ private:
   string currentCategory();
 
 public:
-  bool wasCorrectlyAnswered();
+  bool wasCorrectlyAnsweredAndGoToNextPlayerAndReturnIfWeHaveAWinner();
   bool wasIncorrectlyAnsweredAndGoToNextPlayer();
 
 private:
