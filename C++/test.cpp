@@ -13,6 +13,8 @@ SCENARIO( "question is correctly answered", "[vector]" ) {
 
   GIVEN( "player is in penalty box and not leaving" ) {
     game.wrongAnswer();
+    game.wrongAnswer();
+    REQUIRE(game.getCurrentPlayerName() == "dummy");
 
     WHEN( "verifying" ) {
     	auto win = game.wasCorrectlyAnswered();
