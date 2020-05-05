@@ -6,9 +6,11 @@ using namespace std;
 #ifndef GAME_H_
 #define GAME_H_
 
+
 class Game{
 
 		private:
+      static const int MIN_NUMBER_OF_PLAYERS = 2;
 		  static const int MAX_NUMBER_OF_PLAYERS = 6;
 			vector<string> players;
 

@@ -1,4 +1,4 @@
-#include "Game.h"
+﻿#include "Game.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <iostream>
@@ -36,7 +36,7 @@ string Game::createRockQuestion(int index)
 
 bool Game::isPlayable()
 {
-	return (howManyPlayers() >= 2);
+	return (howManyPlayers() >= MIN_NUMBER_OF_PLAYERS);
 }
 
 bool Game::add(string playerName){
