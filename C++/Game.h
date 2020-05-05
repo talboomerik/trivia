@@ -33,6 +33,7 @@ public:
 	string createRockQuestion(int index);
 	bool isPlayable();
 	string getCurrentPlayerName() const;
+	int const & getCurrentPlayerPurse() const;
 	bool add(string playerName);
 
 	int howManyPlayers();

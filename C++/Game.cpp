@@ -197,3 +197,8 @@ string Game::getCurrentPlayerName() const
 {
 	return players.at(currentPlayer);
 }
+
+int const & Game::getCurrentPlayerPurse() const
+{
+	return purses[currentPlayer];
+}
