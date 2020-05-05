@@ -8,18 +8,20 @@ given player is not leaving the penalty box then go to next player*/
 SCENARIO( "question is correctly answered", "[vector]" ) {
    
   Game game;
-  game.add("dummy");
-  game.add("smartie");
+  const std::string player1="dummy";
+  const std::string player2="smartie";
+  game.add(player1);
+  game.add(player2);
 
   GIVEN( "player is in penalty box and not leaving" ) {
     game.wasIncorrectlyAnsweredAndGoToNextPlayer();
     game.wasIncorrectlyAnsweredAndGoToNextPlayer();
-    REQUIRE(game.getCurrentPlayerName() == "dummy");
+    REQUIRE(game.getCurrentPlayerName() == player1);
 
     WHEN( "verifying" ) {
     	auto win = game.wasCorrectlyAnsweredAndGoToNextPlayerAndReturnIfWeHaveAWinner();
       THEN( "go to next player" ) {
-    	  REQUIRE(game.getCurrentPlayerName() == "smartie");
+    	  REQUIRE(game.getCurrentPlayerName() == player2);
       }
     }
   }
