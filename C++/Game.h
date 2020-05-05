@@ -44,7 +44,7 @@ private:
 
 public:
   bool wasCorrectlyAnswered();
-  bool wrongAnswer();
+  bool wasIncorrectlyAnsweredAndGoToNextPlayer();
 
 private:
 	bool didPlayerWin();

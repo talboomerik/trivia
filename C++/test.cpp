@@ -12,8 +12,8 @@ SCENARIO( "question is correctly answered", "[vector]" ) {
   game.add("smartie");
 
   GIVEN( "player is in penalty box and not leaving" ) {
-    game.wrongAnswer();
-    game.wrongAnswer();
+    game.wasIncorrectlyAnsweredAndGoToNextPlayer();
+    game.wasIncorrectlyAnsweredAndGoToNextPlayer();
     REQUIRE(game.getCurrentPlayerName() == "dummy");
 
     WHEN( "verifying" ) {

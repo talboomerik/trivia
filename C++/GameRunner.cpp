@@ -28,7 +28,7 @@ int main(int argc, char* argv[])
 
 		if (rand() % 9 == 7)
 		{
-			notAWinner = aGame.wrongAnswer();
+			notAWinner = aGame.wasIncorrectlyAnsweredAndGoToNextPlayer();
 		}
 		else
 		{

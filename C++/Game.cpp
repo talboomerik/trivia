@@ -176,7 +176,7 @@ bool Game::wasCorrectlyAnswered()
 	}
 }
 
-bool Game::wrongAnswer()
+bool Game::wasIncorrectlyAnsweredAndGoToNextPlayer()
 {
 	cout << "Question was incorrectly answered" << endl;
 	cout << players[currentPlayer] + " was sent to the penalty box" << endl;
