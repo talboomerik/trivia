@@ -9,12 +9,13 @@ using namespace std;
 class Game{
 
 		private:
+		  static const int MAX_NUMBER_OF_PLAYERS = 6;
 			vector<string> players;
 
-			int places[6];
-			int purses[6];
+			int places[MAX_NUMBER_OF_PLAYERS];
+			int purses[MAX_NUMBER_OF_PLAYERS];
 
-			bool inPenaltyBox[6];
+			bool inPenaltyBox[MAX_NUMBER_OF_PLAYERS];
 
 			list<string> popQuestions;
 			list<string> scienceQuestions;
