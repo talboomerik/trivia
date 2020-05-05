@@ -147,15 +147,14 @@ bool Game::wasCorrectlyAnsweredAndGoToNextPlayerAndReturnIfWeHaveAWinner()
 				<<  " Gold Coins." << endl;
 
 			bool winner = didPlayerWin();
-			currentPlayer++;
-			if (currentPlayer == players.size()) currentPlayer = 0;
+
+            goToNextPlayer();
 
 			return winner;
 		}
 		else
 		{
-			currentPlayer++;
-			if (currentPlayer == players.size()) currentPlayer = 0;
+            goToNextPlayer();
 			return true;
 		}
 	}
@@ -169,8 +168,8 @@ bool Game::wasCorrectlyAnsweredAndGoToNextPlayerAndReturnIfWeHaveAWinner()
 			<< " Gold Coins." << endl;
 
 		bool winner = didPlayerWin();
-		currentPlayer++;
-		if (currentPlayer == players.size()) currentPlayer = 0;
+
+        goToNextPlayer();
 
 		return winner;
 	}
@@ -201,4 +200,14 @@ string Game::getCurrentPlayerName() const
 int const & Game::getCurrentPlayerPurse() const
 {
 	return purses[currentPlayer];
+}
+
+
+void Game::goToNextPlayer()
+{
+    currentPlayer++;
+    if (currentPlayer == players.size())
+    {
+        currentPlayer = 0;
+    }
 }

@@ -49,6 +49,7 @@ public:
 
 private:
 	bool didPlayerWin();
+    void goToNextPlayer();
 };
 
 #endif /* GAME_H_ */
