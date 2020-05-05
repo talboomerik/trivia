@@ -12,8 +12,8 @@ class Game{
 		  static const int MAX_NUMBER_OF_PLAYERS = 6;
 			vector<string> players;
 
-			int places[MAX_NUMBER_OF_PLAYERS];
-			int purses[MAX_NUMBER_OF_PLAYERS];
+			int places[MAX_NUMBER_OF_PLAYERS] = {};
+			int purses[MAX_NUMBER_OF_PLAYERS] = {};
 
 			bool inPenaltyBox[MAX_NUMBER_OF_PLAYERS];
 
