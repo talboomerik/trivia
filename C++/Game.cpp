@@ -192,3 +192,8 @@ bool Game::didPlayerWin()
 {
 	return !(purses[currentPlayer] == NUMBER_OF_COINS_TO_WIN);
 }
+
+string Game::getCurrentPlayerName() const
+{
+	return players.at(currentPlayer);
+}

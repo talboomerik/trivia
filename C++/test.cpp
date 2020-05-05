@@ -1,6 +1,6 @@
 #define CATCH_CONFIG_MAIN
 #include "catch.hpp"
-#include "Game.hpp"
+#include "Game.h"
 
 /*given player not in penalty box then reward player and go to next player
 given player is leaving the penalty box then reward player and go to next player
@@ -9,13 +9,15 @@ SCENARIO( "question is correctly answered", "[vector]" ) {
    
   Game game;
   game.add("dummy");
+  game.add("smartie");
 
   GIVEN( "player is in penalty box and not leaving" ) {
     game.wrongAnswer();
-    REQUIRE();
+
     WHEN( "verifying" ) {
+    	auto win = game.wasCorrectlyAnswered();
       THEN( "go to next player" ) {
-       REQUIRE();
+    	  REQUIRE(game.getCurrentPlayerName() == "smartie");
       }
     }
   }
