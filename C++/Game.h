@@ -37,13 +37,13 @@ public:
 	int howManyPlayers();
 	void roll(int roll);
 
-	private:
-		void askQuestion();
-		string currentCategory();
+private:
+  void askQuestion();
+  string currentCategory();
 
-				public:
-					bool wasCorrectlyAnswered();
-					bool wrongAnswer();
+public:
+  bool wasCorrectlyAnswered();
+  bool wrongAnswer();
 
 private:
 	bool didPlayerWin();
