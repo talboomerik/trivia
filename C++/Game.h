@@ -12,6 +12,7 @@ class Game{
 		private:
       static const int MIN_NUMBER_OF_PLAYERS = 2;
 		  static const int MAX_NUMBER_OF_PLAYERS = 6;
+		  static const int NUMBER_OF_COINS_TO_WIN = 6;
 			vector<string> players;
 
 			int places[MAX_NUMBER_OF_PLAYERS] = {};
