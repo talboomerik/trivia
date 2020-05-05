@@ -50,6 +50,7 @@ public:
 private:
 	bool didPlayerWin();
     void goToNextPlayer();
+    void RewardPlayer(int playerIndex);
 };
 
 #endif /* GAME_H_ */

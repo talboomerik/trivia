@@ -140,11 +140,7 @@ bool Game::wasCorrectlyAnsweredAndGoToNextPlayerAndReturnIfWeHaveAWinner()
 		if (isGettingOutOfPenaltyBox)
 		{
 			cout << "Answer was correct!!!!" << endl;
-			purses[currentPlayer]++;
-			cout << players[currentPlayer]
-			     << " now has "
-			     << purses[currentPlayer]
-				<<  " Gold Coins." << endl;
+            RewardPlayer(currentPlayer);
 
 			bool winner = didPlayerWin();
 
@@ -161,11 +157,7 @@ bool Game::wasCorrectlyAnsweredAndGoToNextPlayerAndReturnIfWeHaveAWinner()
 	else
 	{
 		cout << "Answer was correct!!!!" << endl;
-		purses[currentPlayer]++;
-		cout << players[currentPlayer]
-				<< " now has "
-				<< purses[currentPlayer]
-			<< " Gold Coins." << endl;
+        RewardPlayer(currentPlayer);
 
 		bool winner = didPlayerWin();
 
@@ -210,4 +202,13 @@ void Game::goToNextPlayer()
     {
         currentPlayer = 0;
     }
+}
+
+void Game::RewardPlayer(int playerIndex)
+{
+    purses[playerIndex]++;
+    cout << players[playerIndex]
+        << " now has "
+        << purses[playerIndex]
+        << " Gold Coins." << endl;
 }
